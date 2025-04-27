@@ -1,0 +1,10 @@
+# Кеш компилятора Go и модули
+/go/pkg/
+/go/bin/
+/go/src/
+*.sum
+vendor/
+
+# IDE и редакторы
+.idea/
+.vscode/
