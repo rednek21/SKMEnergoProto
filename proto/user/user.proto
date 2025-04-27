@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/rednek21/SKMEnergo/proto/gen/go/user;user";
+
+import "common/common.proto";
+
+service UserService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc GetAll (GetAllRequest) returns (GetAllResponse);
+  rpc GetByID (GetByIDRequest) returns (GetByIDResponse);
+  rpc GetByUsername (GetByUsernameRequest) returns (GetByUsernameResponse);
+  rpc UpdateByID (UpdateByIDRequest) returns (UpdateByIDResponse);
+  rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse);
+  rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
+  rpc VerifyUserCredentials(VerifyUserCredentialsRequest) returns (VerifyUserCredentialsResponse);
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password_hash = 2;
+  string email = 3;
+}
+message CreateUserResponse {
+  string username = 1;
+  repeated common.Role roles = 2;
+  repeated common.Permission permissions = 3;
+}
+
+message GetAllRequest {}
+message GetAllResponse {
+  repeated common.User users = 1;
+}
+
+message GetByIDRequest {
+  int32 id = 1;
+}
+message GetByIDResponse {
+  common.User user = 1;
+}
+
+message GetByUsernameRequest {
+  string username = 1;
+}
+message GetByUsernameResponse {
+  common.User user = 1;
+}
+
+message UpdateByIDRequest {
+  int32 id = 1;
+  optional string username = 2;
+  optional string email = 3;
+  optional string first_name = 4;
+  optional string last_name = 5;
+}
+message UpdateByIDResponse {
+  common.User user = 1;
+}
+
+message ResetPasswordRequest {
+  string username = 1;
+}
+message ResetPasswordResponse {
+  string email = 1;
+}
+
+message ResetPasswordConfirmedRequest {
+  string username = 1;
+  string hashed_password = 2;
+}
+message ResetPasswordConfirmedResponse {
+  string username = 1;
+  repeated common.Role roles = 2;
+  repeated common.Permission permissions = 3;
+}
+
+message VerifyUserCredentialsRequest {
+  string username = 1;
+  string password = 2;
+}
+message VerifyUserCredentialsResponse{
+  string username = 1;
+  repeated common.Role roles = 2;
+  repeated common.Permission permissions = 3;
+}
+

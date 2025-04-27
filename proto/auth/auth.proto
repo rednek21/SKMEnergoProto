@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "github.com/rednek21/SKMEnergo/proto/gen/go/auth;auth";
+
+import "common/common.proto";
+
+service AuthService {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc Verify (VerifyRequest) returns (VerifyResponse);
+  rpc Refresh (RefreshRequest) returns (RefreshResponse);
+  rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse);
+  rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
+}
+
+message RegisterRequest {
+  string username = 1;
+  string password = 2;
+  string email = 3;
+}
+message RegisterResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+message LoginResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message VerifyRequest {
+  string access_token = 1;
+}
+message VerifyResponse {
+  common.User user = 1;
+}
+
+message RefreshRequest {
+  string refresh_token = 1;
+}
+message RefreshResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message ResetPasswordRequest {
+  string username = 1;
+}
+message ResetPasswordResponse {}
+
+message ResetPasswordConfirmedRequest {
+  string username = 1;
+  string new_password = 2;
+}
+message ResetPasswordConfirmedResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
