@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "github.com/rednek21/SKMEnergo/proto/gen/go/auth;auth";
+option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/auth;auth";
 
 import "common/common.proto";
 

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "github.com/rednek21/SKMEnergo/proto/gen/go/user;user";
+option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/user;user";
 
 import "common/common.proto";
 

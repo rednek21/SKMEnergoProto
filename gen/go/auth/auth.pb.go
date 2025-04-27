@@ -7,7 +7,7 @@
 package auth
 
 import (
-	common "github.com/rednek21/SKMEnergo/proto/gen/go/common"
+	common "github.com/rednek21/SKMEnergoProto/gen/go/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -648,7 +648,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x06Verify\x12\x13.auth.VerifyRequest\x1a\x14.auth.VerifyResponse\x126\n" +
 	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponse\x12H\n" +
 	"\rResetPassword\x12\x1a.auth.ResetPasswordRequest\x1a\x1b.auth.ResetPasswordResponse\x12c\n" +
-	"\x16ResetPasswordConfirmed\x12#.auth.ResetPasswordConfirmedRequest\x1a$.auth.ResetPasswordConfirmedResponseB6Z4github.com/rednek21/SKMEnergo/proto/gen/go/auth;authb\x06proto3"
+	"\x16ResetPasswordConfirmed\x12#.auth.ResetPasswordConfirmedRequest\x1a$.auth.ResetPasswordConfirmedResponseB5Z3github.com/rednek21/SKMEnergoProto/gen/go/auth;authb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once

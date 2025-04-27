@@ -267,7 +267,7 @@ const file_common_common_proto_rawDesc = "" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04nameB:Z8github.com/rednek21/SKMEnergo/proto/gen/go/common;commonb\x06proto3"
+	"\x04name\x18\x02 \x01(\tR\x04nameB9Z7github.com/rednek21/SKMEnergoProto/gen/go/common;commonb\x06proto3"
 
 var (
 	file_common_common_proto_rawDescOnce sync.Once
