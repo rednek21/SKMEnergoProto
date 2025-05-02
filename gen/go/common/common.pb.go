@@ -32,7 +32,7 @@ type User struct {
 	Confirmed     bool                   `protobuf:"varint,6,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
 	Roles         []*Role                `protobuf:"bytes,7,rep,name=roles,proto3" json:"roles,omitempty"`
 	Permissions   []*Permission          `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	RegisteredAt  *timestamp.Timestamp   `protobuf:"bytes,9,opt,name=registered_at,json=registeredAt,proto3" json:"registered_at,omitempty"`
+	CreatedAt     *timestamp.Timestamp   `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamp.Timestamp   `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -124,9 +124,9 @@ func (x *User) GetPermissions() []*Permission {
 	return nil
 }
 
-func (x *User) GetRegisteredAt() *timestamp.Timestamp {
+func (x *User) GetCreatedAt() *timestamp.Timestamp {
 	if x != nil {
-		return x.RegisteredAt
+		return x.CreatedAt
 	}
 	return nil
 }
@@ -142,6 +142,7 @@ type Role struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -190,10 +191,18 @@ func (x *Role) GetName() string {
 	return ""
 }
 
+func (x *Role) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
 type Permission struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -242,11 +251,18 @@ func (x *Permission) GetName() string {
 	return ""
 }
 
+func (x *Permission) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
 var File_common_common_proto protoreflect.FileDescriptor
 
 const file_common_common_proto_rawDesc = "" +
 	"\n" +
-	"\x13common/common.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x02\n" +
+	"\x13common/common.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf2\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
@@ -256,18 +272,21 @@ const file_common_common_proto_rawDesc = "" +
 	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\x1c\n" +
 	"\tconfirmed\x18\x06 \x01(\bR\tconfirmed\x12\"\n" +
 	"\x05roles\x18\a \x03(\v2\f.common.RoleR\x05roles\x124\n" +
-	"\vpermissions\x18\b \x03(\v2\x12.common.PermissionR\vpermissions\x12?\n" +
-	"\rregistered_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\fregisteredAt\x129\n" +
+	"\vpermissions\x18\b \x03(\v2\x12.common.PermissionR\vpermissions\x129\n" +
+	"\n" +
+	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"*\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"L\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"0\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\"R\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04nameB9Z7github.com/rednek21/SKMEnergoProto/gen/go/common;commonb\x06proto3"
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescriptionB9Z7github.com/rednek21/SKMEnergoProto/gen/go/common;commonb\x06proto3"
 
 var (
 	file_common_common_proto_rawDescOnce sync.Once
@@ -291,7 +310,7 @@ var file_common_common_proto_goTypes = []any{
 var file_common_common_proto_depIdxs = []int32{
 	1, // 0: common.User.roles:type_name -> common.Role
 	2, // 1: common.User.permissions:type_name -> common.Permission
-	3, // 2: common.User.registered_at:type_name -> google.protobuf.Timestamp
+	3, // 2: common.User.created_at:type_name -> google.protobuf.Timestamp
 	3, // 3: common.User.updated_at:type_name -> google.protobuf.Timestamp
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type

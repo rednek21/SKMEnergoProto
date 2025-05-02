@@ -15,16 +15,18 @@ message User {
   bool confirmed = 6;
   repeated Role roles = 7;
   repeated Permission permissions = 8;
-  google.protobuf.Timestamp registered_at = 9;
+  google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
 }
 
 message Role {
   int32 id = 1;
   string name = 2;
+  string description = 3;
 }
 
 message Permission {
   int32 id = 1;
   string name = 2;
+  string description = 3;
 }
