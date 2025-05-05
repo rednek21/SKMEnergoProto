@@ -85,8 +85,8 @@ func (x *CreateUserRequest) GetEmail() string {
 type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Roles         []*common.Role         `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []*common.Permission   `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
+	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -128,14 +128,14 @@ func (x *CreateUserResponse) GetUsername() string {
 	return ""
 }
 
-func (x *CreateUserResponse) GetRoles() []*common.Role {
+func (x *CreateUserResponse) GetRoles() []string {
 	if x != nil {
 		return x.Roles
 	}
 	return nil
 }
 
-func (x *CreateUserResponse) GetPermissions() []*common.Permission {
+func (x *CreateUserResponse) GetPermissions() []string {
 	if x != nil {
 		return x.Permissions
 	}
@@ -661,8 +661,8 @@ func (x *ResetPasswordConfirmedRequest) GetHashedPassword() string {
 type ResetPasswordConfirmedResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Roles         []*common.Role         `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []*common.Permission   `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
+	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -704,14 +704,14 @@ func (x *ResetPasswordConfirmedResponse) GetUsername() string {
 	return ""
 }
 
-func (x *ResetPasswordConfirmedResponse) GetRoles() []*common.Role {
+func (x *ResetPasswordConfirmedResponse) GetRoles() []string {
 	if x != nil {
 		return x.Roles
 	}
 	return nil
 }
 
-func (x *ResetPasswordConfirmedResponse) GetPermissions() []*common.Permission {
+func (x *ResetPasswordConfirmedResponse) GetPermissions() []string {
 	if x != nil {
 		return x.Permissions
 	}
@@ -773,8 +773,8 @@ func (x *VerifyUserCredentialsRequest) GetPassword() string {
 type VerifyUserCredentialsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Roles         []*common.Role         `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []*common.Permission   `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
+	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -816,14 +816,14 @@ func (x *VerifyUserCredentialsResponse) GetUsername() string {
 	return ""
 }
 
-func (x *VerifyUserCredentialsResponse) GetRoles() []*common.Role {
+func (x *VerifyUserCredentialsResponse) GetRoles() []string {
 	if x != nil {
 		return x.Roles
 	}
 	return nil
 }
 
-func (x *VerifyUserCredentialsResponse) GetPermissions() []*common.Permission {
+func (x *VerifyUserCredentialsResponse) GetPermissions() []string {
 	if x != nil {
 		return x.Permissions
 	}
@@ -838,11 +838,11 @@ const file_user_user_proto_rawDesc = "" +
 	"\x11CreateUserRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12#\n" +
 	"\rpassword_hash\x18\x02 \x01(\tR\fpasswordHash\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\"\x8a\x01\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"h\n" +
 	"\x12CreateUserResponse\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\"\n" +
-	"\x05roles\x18\x02 \x03(\v2\f.common.RoleR\x05roles\x124\n" +
-	"\vpermissions\x18\x03 \x03(\v2\x12.common.PermissionR\vpermissions\"\x0f\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
+	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
+	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"\x0f\n" +
 	"\rGetAllRequest\"4\n" +
 	"\x0eGetAllResponse\x12\"\n" +
 	"\x05users\x18\x01 \x03(\v2\f.common.UserR\x05users\" \n" +
@@ -874,18 +874,18 @@ const file_user_user_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"d\n" +
 	"\x1dResetPasswordConfirmedRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12'\n" +
-	"\x0fhashed_password\x18\x02 \x01(\tR\x0ehashedPassword\"\x96\x01\n" +
+	"\x0fhashed_password\x18\x02 \x01(\tR\x0ehashedPassword\"t\n" +
 	"\x1eResetPasswordConfirmedResponse\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\"\n" +
-	"\x05roles\x18\x02 \x03(\v2\f.common.RoleR\x05roles\x124\n" +
-	"\vpermissions\x18\x03 \x03(\v2\x12.common.PermissionR\vpermissions\"V\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
+	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
+	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"V\n" +
 	"\x1cVerifyUserCredentialsRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x95\x01\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"s\n" +
 	"\x1dVerifyUserCredentialsResponse\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\"\n" +
-	"\x05roles\x18\x02 \x03(\v2\f.common.RoleR\x05roles\x124\n" +
-	"\vpermissions\x18\x03 \x03(\v2\x12.common.PermissionR\vpermissions2\xd7\x04\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
+	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
+	"\vpermissions\x18\x03 \x03(\tR\vpermissions2\xd7\x04\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x123\n" +
@@ -928,42 +928,34 @@ var file_user_user_proto_goTypes = []any{
 	(*ResetPasswordConfirmedResponse)(nil), // 13: user.ResetPasswordConfirmedResponse
 	(*VerifyUserCredentialsRequest)(nil),   // 14: user.VerifyUserCredentialsRequest
 	(*VerifyUserCredentialsResponse)(nil),  // 15: user.VerifyUserCredentialsResponse
-	(*common.Role)(nil),                    // 16: common.Role
-	(*common.Permission)(nil),              // 17: common.Permission
-	(*common.User)(nil),                    // 18: common.User
+	(*common.User)(nil),                    // 16: common.User
 }
 var file_user_user_proto_depIdxs = []int32{
-	16, // 0: user.CreateUserResponse.roles:type_name -> common.Role
-	17, // 1: user.CreateUserResponse.permissions:type_name -> common.Permission
-	18, // 2: user.GetAllResponse.users:type_name -> common.User
-	18, // 3: user.GetByIDResponse.user:type_name -> common.User
-	18, // 4: user.GetByUsernameResponse.user:type_name -> common.User
-	18, // 5: user.UpdateByIDResponse.user:type_name -> common.User
-	16, // 6: user.ResetPasswordConfirmedResponse.roles:type_name -> common.Role
-	17, // 7: user.ResetPasswordConfirmedResponse.permissions:type_name -> common.Permission
-	16, // 8: user.VerifyUserCredentialsResponse.roles:type_name -> common.Role
-	17, // 9: user.VerifyUserCredentialsResponse.permissions:type_name -> common.Permission
-	0,  // 10: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	2,  // 11: user.UserService.GetAll:input_type -> user.GetAllRequest
-	4,  // 12: user.UserService.GetByID:input_type -> user.GetByIDRequest
-	6,  // 13: user.UserService.GetByUsername:input_type -> user.GetByUsernameRequest
-	8,  // 14: user.UserService.UpdateByID:input_type -> user.UpdateByIDRequest
-	10, // 15: user.UserService.ResetPassword:input_type -> user.ResetPasswordRequest
-	12, // 16: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
-	14, // 17: user.UserService.VerifyUserCredentials:input_type -> user.VerifyUserCredentialsRequest
-	1,  // 18: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3,  // 19: user.UserService.GetAll:output_type -> user.GetAllResponse
-	5,  // 20: user.UserService.GetByID:output_type -> user.GetByIDResponse
-	7,  // 21: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
-	9,  // 22: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
-	11, // 23: user.UserService.ResetPassword:output_type -> user.ResetPasswordResponse
-	13, // 24: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
-	15, // 25: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
-	18, // [18:26] is the sub-list for method output_type
-	10, // [10:18] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	16, // 0: user.GetAllResponse.users:type_name -> common.User
+	16, // 1: user.GetByIDResponse.user:type_name -> common.User
+	16, // 2: user.GetByUsernameResponse.user:type_name -> common.User
+	16, // 3: user.UpdateByIDResponse.user:type_name -> common.User
+	0,  // 4: user.UserService.CreateUser:input_type -> user.CreateUserRequest
+	2,  // 5: user.UserService.GetAll:input_type -> user.GetAllRequest
+	4,  // 6: user.UserService.GetByID:input_type -> user.GetByIDRequest
+	6,  // 7: user.UserService.GetByUsername:input_type -> user.GetByUsernameRequest
+	8,  // 8: user.UserService.UpdateByID:input_type -> user.UpdateByIDRequest
+	10, // 9: user.UserService.ResetPassword:input_type -> user.ResetPasswordRequest
+	12, // 10: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
+	14, // 11: user.UserService.VerifyUserCredentials:input_type -> user.VerifyUserCredentialsRequest
+	1,  // 12: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3,  // 13: user.UserService.GetAll:output_type -> user.GetAllResponse
+	5,  // 14: user.UserService.GetByID:output_type -> user.GetByIDResponse
+	7,  // 15: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
+	9,  // 16: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
+	11, // 17: user.UserService.ResetPassword:output_type -> user.ResetPasswordResponse
+	13, // 18: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
+	15, // 19: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
+	12, // [12:20] is the sub-list for method output_type
+	4,  // [4:12] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_user_user_proto_init() }
