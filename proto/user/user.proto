@@ -24,8 +24,8 @@ message CreateUserRequest {
 }
 message CreateUserResponse {
   string username = 1;
-  repeated common.Role roles = 2;
-  repeated common.Permission permissions = 3;
+  repeated string roles = 2;
+  repeated string permissions = 3;
 }
 
 message GetAllRequest {}
@@ -71,8 +71,8 @@ message ResetPasswordConfirmedRequest {
 }
 message ResetPasswordConfirmedResponse {
   string username = 1;
-  repeated common.Role roles = 2;
-  repeated common.Permission permissions = 3;
+  repeated string roles = 2;
+  repeated string permissions = 3;
 }
 
 message VerifyUserCredentialsRequest {
@@ -81,7 +81,7 @@ message VerifyUserCredentialsRequest {
 }
 message VerifyUserCredentialsResponse{
   string username = 1;
-  repeated common.Role roles = 2;
-  repeated common.Permission permissions = 3;
+  repeated string roles = 2;
+  repeated string permissions = 3;
 }
 
