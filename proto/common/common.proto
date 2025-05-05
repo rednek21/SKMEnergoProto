@@ -6,6 +6,19 @@ option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/common;common";
 
 import "google/protobuf/timestamp.proto";
 
+//message User {
+//  int32 id = 1;
+//  string username = 2;
+//  string email = 3;
+//  string first_name = 4;
+//  string last_name = 5;
+//  bool confirmed = 6;
+//  repeated Role roles = 7;
+//  repeated Permission permissions = 8;
+//  google.protobuf.Timestamp created_at = 9;
+//  google.protobuf.Timestamp updated_at = 10;
+//}
+
 message User {
   int32 id = 1;
   string username = 2;
@@ -13,8 +26,8 @@ message User {
   string first_name = 4;
   string last_name = 5;
   bool confirmed = 6;
-  repeated Role roles = 7;
-  repeated Permission permissions = 8;
+  repeated string roles = 7;
+  repeated string permissions = 8;
   google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
 }

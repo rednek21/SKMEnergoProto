@@ -30,8 +30,8 @@ type User struct {
 	FirstName     string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	Confirmed     bool                   `protobuf:"varint,6,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
-	Roles         []*Role                `protobuf:"bytes,7,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []*Permission          `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Roles         []string               `protobuf:"bytes,7,rep,name=roles,proto3" json:"roles,omitempty"`
+	Permissions   []string               `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	CreatedAt     *timestamp.Timestamp   `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamp.Timestamp   `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -110,14 +110,14 @@ func (x *User) GetConfirmed() bool {
 	return false
 }
 
-func (x *User) GetRoles() []*Role {
+func (x *User) GetRoles() []string {
 	if x != nil {
 		return x.Roles
 	}
 	return nil
 }
 
-func (x *User) GetPermissions() []*Permission {
+func (x *User) GetPermissions() []string {
 	if x != nil {
 		return x.Permissions
 	}
@@ -262,7 +262,7 @@ var File_common_common_proto protoreflect.FileDescriptor
 
 const file_common_common_proto_rawDesc = "" +
 	"\n" +
-	"\x13common/common.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf2\x02\n" +
+	"\x13common/common.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd0\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
@@ -270,9 +270,9 @@ const file_common_common_proto_rawDesc = "" +
 	"\n" +
 	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\x1c\n" +
-	"\tconfirmed\x18\x06 \x01(\bR\tconfirmed\x12\"\n" +
-	"\x05roles\x18\a \x03(\v2\f.common.RoleR\x05roles\x124\n" +
-	"\vpermissions\x18\b \x03(\v2\x12.common.PermissionR\vpermissions\x129\n" +
+	"\tconfirmed\x18\x06 \x01(\bR\tconfirmed\x12\x14\n" +
+	"\x05roles\x18\a \x03(\tR\x05roles\x12 \n" +
+	"\vpermissions\x18\b \x03(\tR\vpermissions\x129\n" +
 	"\n" +
 	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
@@ -308,15 +308,13 @@ var file_common_common_proto_goTypes = []any{
 	(*timestamp.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_common_common_proto_depIdxs = []int32{
-	1, // 0: common.User.roles:type_name -> common.Role
-	2, // 1: common.User.permissions:type_name -> common.Permission
-	3, // 2: common.User.created_at:type_name -> google.protobuf.Timestamp
-	3, // 3: common.User.updated_at:type_name -> google.protobuf.Timestamp
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	3, // 0: common.User.created_at:type_name -> google.protobuf.Timestamp
+	3, // 1: common.User.updated_at:type_name -> google.protobuf.Timestamp
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_common_common_proto_init() }
