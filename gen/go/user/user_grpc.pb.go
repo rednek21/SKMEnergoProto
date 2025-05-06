@@ -27,6 +27,7 @@ const (
 	UserService_ResetPassword_FullMethodName          = "/user.UserService/ResetPassword"
 	UserService_ResetPasswordConfirmed_FullMethodName = "/user.UserService/ResetPasswordConfirmed"
 	UserService_VerifyUserCredentials_FullMethodName  = "/user.UserService/VerifyUserCredentials"
+	UserService_ConfirmEmail_FullMethodName           = "/user.UserService/ConfirmEmail"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -41,6 +42,7 @@ type UserServiceClient interface {
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
 	ResetPasswordConfirmed(ctx context.Context, in *ResetPasswordConfirmedRequest, opts ...grpc.CallOption) (*ResetPasswordConfirmedResponse, error)
 	VerifyUserCredentials(ctx context.Context, in *VerifyUserCredentialsRequest, opts ...grpc.CallOption) (*VerifyUserCredentialsResponse, error)
+	ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error)
 }
 
 type userServiceClient struct {
@@ -131,6 +133,16 @@ func (c *userServiceClient) VerifyUserCredentials(ctx context.Context, in *Verif
 	return out, nil
 }
 
+func (c *userServiceClient) ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfirmEmailResponse)
+	err := c.cc.Invoke(ctx, UserService_ConfirmEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -143,6 +155,7 @@ type UserServiceServer interface {
 	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
 	ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error)
 	VerifyUserCredentials(context.Context, *VerifyUserCredentialsRequest) (*VerifyUserCredentialsResponse, error)
+	ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -176,6 +189,9 @@ func (UnimplementedUserServiceServer) ResetPasswordConfirmed(context.Context, *R
 }
 func (UnimplementedUserServiceServer) VerifyUserCredentials(context.Context, *VerifyUserCredentialsRequest) (*VerifyUserCredentialsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyUserCredentials not implemented")
+}
+func (UnimplementedUserServiceServer) ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfirmEmail not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -342,6 +358,24 @@ func _UserService_VerifyUserCredentials_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_ConfirmEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConfirmEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).ConfirmEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_ConfirmEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).ConfirmEmail(ctx, req.(*ConfirmEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -380,6 +414,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VerifyUserCredentials",
 			Handler:    _UserService_VerifyUserCredentials_Handler,
+		},
+		{
+			MethodName: "ConfirmEmail",
+			Handler:    _UserService_ConfirmEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

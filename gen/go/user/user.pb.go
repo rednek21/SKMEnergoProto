@@ -830,6 +830,86 @@ func (x *VerifyUserCredentialsResponse) GetPermissions() []string {
 	return nil
 }
 
+type ConfirmEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfirmEmailRequest) Reset() {
+	*x = ConfirmEmailRequest{}
+	mi := &file_user_user_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfirmEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfirmEmailRequest) ProtoMessage() {}
+
+func (x *ConfirmEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfirmEmailRequest.ProtoReflect.Descriptor instead.
+func (*ConfirmEmailRequest) Descriptor() ([]byte, []int) {
+	return file_user_user_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ConfirmEmailRequest) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+type ConfirmEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfirmEmailResponse) Reset() {
+	*x = ConfirmEmailResponse{}
+	mi := &file_user_user_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfirmEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfirmEmailResponse) ProtoMessage() {}
+
+func (x *ConfirmEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfirmEmailResponse.ProtoReflect.Descriptor instead.
+func (*ConfirmEmailResponse) Descriptor() ([]byte, []int) {
+	return file_user_user_proto_rawDescGZIP(), []int{17}
+}
+
 var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
@@ -885,7 +965,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x1dVerifyUserCredentialsResponse\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions2\xd7\x04\n" +
+	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
+	"\x13ConfirmEmailRequest\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
+	"\x14ConfirmEmailResponse2\x9e\x05\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x123\n" +
@@ -896,7 +979,8 @@ const file_user_user_proto_rawDesc = "" +
 	"UpdateByID\x12\x17.user.UpdateByIDRequest\x1a\x18.user.UpdateByIDResponse\x12H\n" +
 	"\rResetPassword\x12\x1a.user.ResetPasswordRequest\x1a\x1b.user.ResetPasswordResponse\x12c\n" +
 	"\x16ResetPasswordConfirmed\x12#.user.ResetPasswordConfirmedRequest\x1a$.user.ResetPasswordConfirmedResponse\x12`\n" +
-	"\x15VerifyUserCredentials\x12\".user.VerifyUserCredentialsRequest\x1a#.user.VerifyUserCredentialsResponseB5Z3github.com/rednek21/SKMEnergoProto/gen/go/user;userb\x06proto3"
+	"\x15VerifyUserCredentials\x12\".user.VerifyUserCredentialsRequest\x1a#.user.VerifyUserCredentialsResponse\x12E\n" +
+	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponseB5Z3github.com/rednek21/SKMEnergoProto/gen/go/user;userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -910,7 +994,7 @@ func file_user_user_proto_rawDescGZIP() []byte {
 	return file_user_user_proto_rawDescData
 }
 
-var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_user_user_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),              // 0: user.CreateUserRequest
 	(*CreateUserResponse)(nil),             // 1: user.CreateUserResponse
@@ -928,13 +1012,15 @@ var file_user_user_proto_goTypes = []any{
 	(*ResetPasswordConfirmedResponse)(nil), // 13: user.ResetPasswordConfirmedResponse
 	(*VerifyUserCredentialsRequest)(nil),   // 14: user.VerifyUserCredentialsRequest
 	(*VerifyUserCredentialsResponse)(nil),  // 15: user.VerifyUserCredentialsResponse
-	(*common.User)(nil),                    // 16: common.User
+	(*ConfirmEmailRequest)(nil),            // 16: user.ConfirmEmailRequest
+	(*ConfirmEmailResponse)(nil),           // 17: user.ConfirmEmailResponse
+	(*common.User)(nil),                    // 18: common.User
 }
 var file_user_user_proto_depIdxs = []int32{
-	16, // 0: user.GetAllResponse.users:type_name -> common.User
-	16, // 1: user.GetByIDResponse.user:type_name -> common.User
-	16, // 2: user.GetByUsernameResponse.user:type_name -> common.User
-	16, // 3: user.UpdateByIDResponse.user:type_name -> common.User
+	18, // 0: user.GetAllResponse.users:type_name -> common.User
+	18, // 1: user.GetByIDResponse.user:type_name -> common.User
+	18, // 2: user.GetByUsernameResponse.user:type_name -> common.User
+	18, // 3: user.UpdateByIDResponse.user:type_name -> common.User
 	0,  // 4: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	2,  // 5: user.UserService.GetAll:input_type -> user.GetAllRequest
 	4,  // 6: user.UserService.GetByID:input_type -> user.GetByIDRequest
@@ -943,16 +1029,18 @@ var file_user_user_proto_depIdxs = []int32{
 	10, // 9: user.UserService.ResetPassword:input_type -> user.ResetPasswordRequest
 	12, // 10: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
 	14, // 11: user.UserService.VerifyUserCredentials:input_type -> user.VerifyUserCredentialsRequest
-	1,  // 12: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3,  // 13: user.UserService.GetAll:output_type -> user.GetAllResponse
-	5,  // 14: user.UserService.GetByID:output_type -> user.GetByIDResponse
-	7,  // 15: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
-	9,  // 16: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
-	11, // 17: user.UserService.ResetPassword:output_type -> user.ResetPasswordResponse
-	13, // 18: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
-	15, // 19: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
-	12, // [12:20] is the sub-list for method output_type
-	4,  // [4:12] is the sub-list for method input_type
+	16, // 12: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
+	1,  // 13: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3,  // 14: user.UserService.GetAll:output_type -> user.GetAllResponse
+	5,  // 15: user.UserService.GetByID:output_type -> user.GetByIDResponse
+	7,  // 16: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
+	9,  // 17: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
+	11, // 18: user.UserService.ResetPassword:output_type -> user.ResetPasswordResponse
+	13, // 19: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
+	15, // 20: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
+	17, // 21: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
+	13, // [13:22] is the sub-list for method output_type
+	4,  // [4:13] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name
@@ -970,7 +1058,7 @@ func file_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_user_proto_rawDesc), len(file_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

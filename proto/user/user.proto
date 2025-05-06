@@ -15,6 +15,7 @@ service UserService {
   rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse);
   rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
   rpc VerifyUserCredentials(VerifyUserCredentialsRequest) returns (VerifyUserCredentialsResponse);
+  rpc ConfirmEmail(ConfirmEmailRequest) returns (ConfirmEmailResponse);
 }
 
 message CreateUserRequest {
@@ -79,9 +80,13 @@ message VerifyUserCredentialsRequest {
   string username = 1;
   string password = 2;
 }
-message VerifyUserCredentialsResponse{
+message VerifyUserCredentialsResponse {
   string username = 1;
   repeated string roles = 2;
   repeated string permissions = 3;
 }
 
+message ConfirmEmailRequest {
+  string username = 1;
+}
+message ConfirmEmailResponse {}
