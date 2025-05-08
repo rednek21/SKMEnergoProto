@@ -518,94 +518,6 @@ func (x *UpdateByIDResponse) GetUser() *common.User {
 	return nil
 }
 
-type ResetPasswordRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetPasswordRequest) Reset() {
-	*x = ResetPasswordRequest{}
-	mi := &file_user_user_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetPasswordRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetPasswordRequest) ProtoMessage() {}
-
-func (x *ResetPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetPasswordRequest.ProtoReflect.Descriptor instead.
-func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ResetPasswordRequest) GetUsername() string {
-	if x != nil {
-		return x.Username
-	}
-	return ""
-}
-
-type ResetPasswordResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetPasswordResponse) Reset() {
-	*x = ResetPasswordResponse{}
-	mi := &file_user_user_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetPasswordResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetPasswordResponse) ProtoMessage() {}
-
-func (x *ResetPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetPasswordResponse.ProtoReflect.Descriptor instead.
-func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ResetPasswordResponse) GetEmail() string {
-	if x != nil {
-		return x.Email
-	}
-	return ""
-}
-
 type ResetPasswordConfirmedRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Username       string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
@@ -616,7 +528,7 @@ type ResetPasswordConfirmedRequest struct {
 
 func (x *ResetPasswordConfirmedRequest) Reset() {
 	*x = ResetPasswordConfirmedRequest{}
-	mi := &file_user_user_proto_msgTypes[12]
+	mi := &file_user_user_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -628,7 +540,7 @@ func (x *ResetPasswordConfirmedRequest) String() string {
 func (*ResetPasswordConfirmedRequest) ProtoMessage() {}
 
 func (x *ResetPasswordConfirmedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[12]
+	mi := &file_user_user_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -641,7 +553,7 @@ func (x *ResetPasswordConfirmedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordConfirmedRequest.ProtoReflect.Descriptor instead.
 func (*ResetPasswordConfirmedRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{12}
+	return file_user_user_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ResetPasswordConfirmedRequest) GetUsername() string {
@@ -669,7 +581,7 @@ type ResetPasswordConfirmedResponse struct {
 
 func (x *ResetPasswordConfirmedResponse) Reset() {
 	*x = ResetPasswordConfirmedResponse{}
-	mi := &file_user_user_proto_msgTypes[13]
+	mi := &file_user_user_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -681,7 +593,7 @@ func (x *ResetPasswordConfirmedResponse) String() string {
 func (*ResetPasswordConfirmedResponse) ProtoMessage() {}
 
 func (x *ResetPasswordConfirmedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[13]
+	mi := &file_user_user_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -694,7 +606,7 @@ func (x *ResetPasswordConfirmedResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordConfirmedResponse.ProtoReflect.Descriptor instead.
 func (*ResetPasswordConfirmedResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{13}
+	return file_user_user_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ResetPasswordConfirmedResponse) GetUsername() string {
@@ -728,7 +640,7 @@ type VerifyUserCredentialsRequest struct {
 
 func (x *VerifyUserCredentialsRequest) Reset() {
 	*x = VerifyUserCredentialsRequest{}
-	mi := &file_user_user_proto_msgTypes[14]
+	mi := &file_user_user_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -740,7 +652,7 @@ func (x *VerifyUserCredentialsRequest) String() string {
 func (*VerifyUserCredentialsRequest) ProtoMessage() {}
 
 func (x *VerifyUserCredentialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[14]
+	mi := &file_user_user_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -753,7 +665,7 @@ func (x *VerifyUserCredentialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VerifyUserCredentialsRequest.ProtoReflect.Descriptor instead.
 func (*VerifyUserCredentialsRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{14}
+	return file_user_user_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *VerifyUserCredentialsRequest) GetUsername() string {
@@ -781,7 +693,7 @@ type VerifyUserCredentialsResponse struct {
 
 func (x *VerifyUserCredentialsResponse) Reset() {
 	*x = VerifyUserCredentialsResponse{}
-	mi := &file_user_user_proto_msgTypes[15]
+	mi := &file_user_user_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -793,7 +705,7 @@ func (x *VerifyUserCredentialsResponse) String() string {
 func (*VerifyUserCredentialsResponse) ProtoMessage() {}
 
 func (x *VerifyUserCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[15]
+	mi := &file_user_user_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -806,7 +718,7 @@ func (x *VerifyUserCredentialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VerifyUserCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*VerifyUserCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{15}
+	return file_user_user_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *VerifyUserCredentialsResponse) GetUsername() string {
@@ -839,7 +751,7 @@ type ConfirmEmailRequest struct {
 
 func (x *ConfirmEmailRequest) Reset() {
 	*x = ConfirmEmailRequest{}
-	mi := &file_user_user_proto_msgTypes[16]
+	mi := &file_user_user_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -851,7 +763,7 @@ func (x *ConfirmEmailRequest) String() string {
 func (*ConfirmEmailRequest) ProtoMessage() {}
 
 func (x *ConfirmEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[16]
+	mi := &file_user_user_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -864,7 +776,7 @@ func (x *ConfirmEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmEmailRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmEmailRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{16}
+	return file_user_user_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ConfirmEmailRequest) GetUsername() string {
@@ -882,7 +794,7 @@ type ConfirmEmailResponse struct {
 
 func (x *ConfirmEmailResponse) Reset() {
 	*x = ConfirmEmailResponse{}
-	mi := &file_user_user_proto_msgTypes[17]
+	mi := &file_user_user_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -894,7 +806,7 @@ func (x *ConfirmEmailResponse) String() string {
 func (*ConfirmEmailResponse) ProtoMessage() {}
 
 func (x *ConfirmEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[17]
+	mi := &file_user_user_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -907,7 +819,7 @@ func (x *ConfirmEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmEmailResponse.ProtoReflect.Descriptor instead.
 func (*ConfirmEmailResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{17}
+	return file_user_user_proto_rawDescGZIP(), []int{15}
 }
 
 var File_user_user_proto protoreflect.FileDescriptor
@@ -947,11 +859,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\n" +
 	"_last_name\"6\n" +
 	"\x12UpdateByIDResponse\x12 \n" +
-	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"2\n" +
-	"\x14ResetPasswordRequest\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\"-\n" +
-	"\x15ResetPasswordResponse\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"d\n" +
+	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"d\n" +
 	"\x1dResetPasswordConfirmedRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12'\n" +
 	"\x0fhashed_password\x18\x02 \x01(\tR\x0ehashedPassword\"t\n" +
@@ -968,7 +876,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
 	"\x13ConfirmEmailRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
-	"\x14ConfirmEmailResponse2\x9e\x05\n" +
+	"\x14ConfirmEmailResponse2\xd4\x04\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x123\n" +
@@ -976,8 +884,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\aGetByID\x12\x14.user.GetByIDRequest\x1a\x15.user.GetByIDResponse\x12H\n" +
 	"\rGetByUsername\x12\x1a.user.GetByUsernameRequest\x1a\x1b.user.GetByUsernameResponse\x12?\n" +
 	"\n" +
-	"UpdateByID\x12\x17.user.UpdateByIDRequest\x1a\x18.user.UpdateByIDResponse\x12H\n" +
-	"\rResetPassword\x12\x1a.user.ResetPasswordRequest\x1a\x1b.user.ResetPasswordResponse\x12c\n" +
+	"UpdateByID\x12\x17.user.UpdateByIDRequest\x1a\x18.user.UpdateByIDResponse\x12c\n" +
 	"\x16ResetPasswordConfirmed\x12#.user.ResetPasswordConfirmedRequest\x1a$.user.ResetPasswordConfirmedResponse\x12`\n" +
 	"\x15VerifyUserCredentials\x12\".user.VerifyUserCredentialsRequest\x1a#.user.VerifyUserCredentialsResponse\x12E\n" +
 	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponseB5Z3github.com/rednek21/SKMEnergoProto/gen/go/user;userb\x06proto3"
@@ -994,7 +901,7 @@ func file_user_user_proto_rawDescGZIP() []byte {
 	return file_user_user_proto_rawDescData
 }
 
-var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_user_user_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),              // 0: user.CreateUserRequest
 	(*CreateUserResponse)(nil),             // 1: user.CreateUserResponse
@@ -1006,41 +913,37 @@ var file_user_user_proto_goTypes = []any{
 	(*GetByUsernameResponse)(nil),          // 7: user.GetByUsernameResponse
 	(*UpdateByIDRequest)(nil),              // 8: user.UpdateByIDRequest
 	(*UpdateByIDResponse)(nil),             // 9: user.UpdateByIDResponse
-	(*ResetPasswordRequest)(nil),           // 10: user.ResetPasswordRequest
-	(*ResetPasswordResponse)(nil),          // 11: user.ResetPasswordResponse
-	(*ResetPasswordConfirmedRequest)(nil),  // 12: user.ResetPasswordConfirmedRequest
-	(*ResetPasswordConfirmedResponse)(nil), // 13: user.ResetPasswordConfirmedResponse
-	(*VerifyUserCredentialsRequest)(nil),   // 14: user.VerifyUserCredentialsRequest
-	(*VerifyUserCredentialsResponse)(nil),  // 15: user.VerifyUserCredentialsResponse
-	(*ConfirmEmailRequest)(nil),            // 16: user.ConfirmEmailRequest
-	(*ConfirmEmailResponse)(nil),           // 17: user.ConfirmEmailResponse
-	(*common.User)(nil),                    // 18: common.User
+	(*ResetPasswordConfirmedRequest)(nil),  // 10: user.ResetPasswordConfirmedRequest
+	(*ResetPasswordConfirmedResponse)(nil), // 11: user.ResetPasswordConfirmedResponse
+	(*VerifyUserCredentialsRequest)(nil),   // 12: user.VerifyUserCredentialsRequest
+	(*VerifyUserCredentialsResponse)(nil),  // 13: user.VerifyUserCredentialsResponse
+	(*ConfirmEmailRequest)(nil),            // 14: user.ConfirmEmailRequest
+	(*ConfirmEmailResponse)(nil),           // 15: user.ConfirmEmailResponse
+	(*common.User)(nil),                    // 16: common.User
 }
 var file_user_user_proto_depIdxs = []int32{
-	18, // 0: user.GetAllResponse.users:type_name -> common.User
-	18, // 1: user.GetByIDResponse.user:type_name -> common.User
-	18, // 2: user.GetByUsernameResponse.user:type_name -> common.User
-	18, // 3: user.UpdateByIDResponse.user:type_name -> common.User
+	16, // 0: user.GetAllResponse.users:type_name -> common.User
+	16, // 1: user.GetByIDResponse.user:type_name -> common.User
+	16, // 2: user.GetByUsernameResponse.user:type_name -> common.User
+	16, // 3: user.UpdateByIDResponse.user:type_name -> common.User
 	0,  // 4: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	2,  // 5: user.UserService.GetAll:input_type -> user.GetAllRequest
 	4,  // 6: user.UserService.GetByID:input_type -> user.GetByIDRequest
 	6,  // 7: user.UserService.GetByUsername:input_type -> user.GetByUsernameRequest
 	8,  // 8: user.UserService.UpdateByID:input_type -> user.UpdateByIDRequest
-	10, // 9: user.UserService.ResetPassword:input_type -> user.ResetPasswordRequest
-	12, // 10: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
-	14, // 11: user.UserService.VerifyUserCredentials:input_type -> user.VerifyUserCredentialsRequest
-	16, // 12: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
-	1,  // 13: user.UserService.CreateUser:output_type -> user.CreateUserResponse
-	3,  // 14: user.UserService.GetAll:output_type -> user.GetAllResponse
-	5,  // 15: user.UserService.GetByID:output_type -> user.GetByIDResponse
-	7,  // 16: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
-	9,  // 17: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
-	11, // 18: user.UserService.ResetPassword:output_type -> user.ResetPasswordResponse
-	13, // 19: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
-	15, // 20: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
-	17, // 21: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
-	13, // [13:22] is the sub-list for method output_type
-	4,  // [4:13] is the sub-list for method input_type
+	10, // 9: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
+	12, // 10: user.UserService.VerifyUserCredentials:input_type -> user.VerifyUserCredentialsRequest
+	14, // 11: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
+	1,  // 12: user.UserService.CreateUser:output_type -> user.CreateUserResponse
+	3,  // 13: user.UserService.GetAll:output_type -> user.GetAllResponse
+	5,  // 14: user.UserService.GetByID:output_type -> user.GetByIDResponse
+	7,  // 15: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
+	9,  // 16: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
+	11, // 17: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
+	13, // 18: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
+	15, // 19: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
+	12, // [12:20] is the sub-list for method output_type
+	4,  // [4:12] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name
@@ -1058,7 +961,7 @@ func file_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_user_proto_rawDesc), len(file_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

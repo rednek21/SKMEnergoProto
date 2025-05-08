@@ -55,7 +55,7 @@ message ResetPasswordRequest {
 message ResetPasswordResponse {}
 
 message ResetPasswordConfirmedRequest {
-  string username = 1;
+  string uuid = 1;
   string new_password = 2;
 }
 message ResetPasswordConfirmedResponse {

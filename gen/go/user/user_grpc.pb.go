@@ -24,7 +24,6 @@ const (
 	UserService_GetByID_FullMethodName                = "/user.UserService/GetByID"
 	UserService_GetByUsername_FullMethodName          = "/user.UserService/GetByUsername"
 	UserService_UpdateByID_FullMethodName             = "/user.UserService/UpdateByID"
-	UserService_ResetPassword_FullMethodName          = "/user.UserService/ResetPassword"
 	UserService_ResetPasswordConfirmed_FullMethodName = "/user.UserService/ResetPasswordConfirmed"
 	UserService_VerifyUserCredentials_FullMethodName  = "/user.UserService/VerifyUserCredentials"
 	UserService_ConfirmEmail_FullMethodName           = "/user.UserService/ConfirmEmail"
@@ -39,7 +38,6 @@ type UserServiceClient interface {
 	GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetByIDResponse, error)
 	GetByUsername(ctx context.Context, in *GetByUsernameRequest, opts ...grpc.CallOption) (*GetByUsernameResponse, error)
 	UpdateByID(ctx context.Context, in *UpdateByIDRequest, opts ...grpc.CallOption) (*UpdateByIDResponse, error)
-	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
 	ResetPasswordConfirmed(ctx context.Context, in *ResetPasswordConfirmedRequest, opts ...grpc.CallOption) (*ResetPasswordConfirmedResponse, error)
 	VerifyUserCredentials(ctx context.Context, in *VerifyUserCredentialsRequest, opts ...grpc.CallOption) (*VerifyUserCredentialsResponse, error)
 	ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error)
@@ -103,16 +101,6 @@ func (c *userServiceClient) UpdateByID(ctx context.Context, in *UpdateByIDReques
 	return out, nil
 }
 
-func (c *userServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetPasswordResponse)
-	err := c.cc.Invoke(ctx, UserService_ResetPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *userServiceClient) ResetPasswordConfirmed(ctx context.Context, in *ResetPasswordConfirmedRequest, opts ...grpc.CallOption) (*ResetPasswordConfirmedResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResetPasswordConfirmedResponse)
@@ -152,7 +140,6 @@ type UserServiceServer interface {
 	GetByID(context.Context, *GetByIDRequest) (*GetByIDResponse, error)
 	GetByUsername(context.Context, *GetByUsernameRequest) (*GetByUsernameResponse, error)
 	UpdateByID(context.Context, *UpdateByIDRequest) (*UpdateByIDResponse, error)
-	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
 	ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error)
 	VerifyUserCredentials(context.Context, *VerifyUserCredentialsRequest) (*VerifyUserCredentialsResponse, error)
 	ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error)
@@ -180,9 +167,6 @@ func (UnimplementedUserServiceServer) GetByUsername(context.Context, *GetByUsern
 }
 func (UnimplementedUserServiceServer) UpdateByID(context.Context, *UpdateByIDRequest) (*UpdateByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateByID not implemented")
-}
-func (UnimplementedUserServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
 }
 func (UnimplementedUserServiceServer) ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPasswordConfirmed not implemented")
@@ -304,24 +288,6 @@ func _UserService_UpdateByID_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).ResetPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_ResetPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).ResetPassword(ctx, req.(*ResetPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _UserService_ResetPasswordConfirmed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResetPasswordConfirmedRequest)
 	if err := dec(in); err != nil {
@@ -402,10 +368,6 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateByID",
 			Handler:    _UserService_UpdateByID_Handler,
-		},
-		{
-			MethodName: "ResetPassword",
-			Handler:    _UserService_ResetPassword_Handler,
 		},
 		{
 			MethodName: "ResetPasswordConfirmed",

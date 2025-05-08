@@ -504,7 +504,7 @@ func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
 
 type ResetPasswordConfirmedRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	NewPassword   string                 `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -540,9 +540,9 @@ func (*ResetPasswordConfirmedRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *ResetPasswordConfirmedRequest) GetUsername() string {
+func (x *ResetPasswordConfirmedRequest) GetUuid() string {
 	if x != nil {
-		return x.Username
+		return x.Uuid
 	}
 	return ""
 }
@@ -635,9 +635,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"2\n" +
 	"\x14ResetPasswordRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x17\n" +
-	"\x15ResetPasswordResponse\"^\n" +
-	"\x1dResetPasswordConfirmedRequest\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12!\n" +
+	"\x15ResetPasswordResponse\"V\n" +
+	"\x1dResetPasswordConfirmedRequest\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12!\n" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"h\n" +
 	"\x1eResetPasswordConfirmedResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
