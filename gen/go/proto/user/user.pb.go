@@ -7,7 +7,7 @@
 package user
 
 import (
-	common "github.com/rednek21/SKMEnergoProto/gen/go/common"
+	common "github.com/rednek21/SKMEnergoProto/gen/go/proto/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -887,7 +887,7 @@ const file_user_user_proto_rawDesc = "" +
 	"UpdateByID\x12\x17.user.UpdateByIDRequest\x1a\x18.user.UpdateByIDResponse\x12c\n" +
 	"\x16ResetPasswordConfirmed\x12#.user.ResetPasswordConfirmedRequest\x1a$.user.ResetPasswordConfirmedResponse\x12`\n" +
 	"\x15VerifyUserCredentials\x12\".user.VerifyUserCredentialsRequest\x1a#.user.VerifyUserCredentialsResponse\x12E\n" +
-	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponseB5Z3github.com/rednek21/SKMEnergoProto/gen/go/user;userb\x06proto3"
+	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common;
 
-option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/common;common";
+option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/proto/common;common";
 
 import "google/protobuf/timestamp.proto";
 
