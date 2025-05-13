@@ -10,6 +10,7 @@ PROTOC_INCLUDE_DIRS=\
 	-I$(PROTO_SRC_DIR)
 
 PROTO_FILES=$(shell find $(PROTO_SRC_DIR) -name '*.proto')
+AVRO_FILES := $(shell find $(AVRO_SRC_DIR) -name '*.avsc')
 
 
 proto:
@@ -21,8 +22,12 @@ proto:
 
 avro:
 	mkdir -p $(GEN_AVRO_DIR)/user
-	gogen-avro $(GEN_AVRO_DIR)/user $(AVRO_SRC_DIR)/user/user_created.avsc
-	gogen-avro $(GEN_AVRO_DIR)/user $(AVRO_SRC_DIR)/user/user_email_changed.avsc
-	gogen-avro $(GEN_AVRO_DIR)/user $(AVRO_SRC_DIR)/user/user_password_reset.avsc
+	@for file in $(AVRO_FILES); do \
+		subdir=$$(dirname $$file | sed "s|$(AVRO_SRC_DIR)||"); \
+		outdir="$(GEN_AVRO_DIR)/$$subdir"; \
+		mkdir -p $$outdir; \
+		echo "Generating $$file → $$outdir"; \
+		gogen-avro $$outdir $$file; \
+	done
 
 generate: avro proto

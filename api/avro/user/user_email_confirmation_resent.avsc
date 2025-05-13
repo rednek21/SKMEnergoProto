@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "name": "UserEmailConfirmationResent",
+  "namespace": "events.user",
+  "fields": [
+    { "name": "uuid", "type": "string" },
+    { "name": "email", "type": "string" },
+    {
+      "name": "created_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}
