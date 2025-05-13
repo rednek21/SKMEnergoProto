@@ -13,6 +13,8 @@ service AuthService {
   rpc Refresh (RefreshRequest) returns (RefreshResponse);
   rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse);
   rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
+  rpc ConfirmEmail(ConfirmEmailRequest) returns (ConfirmEmailResponse);
+  rpc ResendConfirmEmail(ResendConfirmEmailRequest) returns (ResendConfirmEmailResponse);
 }
 
 message RegisterRequest {
@@ -62,3 +64,13 @@ message ResetPasswordConfirmedResponse {
   string access_token = 1;
   string refresh_token = 2;
 }
+
+message ConfirmEmailRequest {
+  string uuid = 1;
+}
+message ConfirmEmailResponse {}
+
+message ResendConfirmEmailRequest {
+  string username = 1;
+}
+message ResendConfirmEmailResponse {}

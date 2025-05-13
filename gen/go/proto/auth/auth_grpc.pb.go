@@ -25,6 +25,8 @@ const (
 	AuthService_Refresh_FullMethodName                = "/auth.AuthService/Refresh"
 	AuthService_ResetPassword_FullMethodName          = "/auth.AuthService/ResetPassword"
 	AuthService_ResetPasswordConfirmed_FullMethodName = "/auth.AuthService/ResetPasswordConfirmed"
+	AuthService_ConfirmEmail_FullMethodName           = "/auth.AuthService/ConfirmEmail"
+	AuthService_ResendConfirmEmail_FullMethodName     = "/auth.AuthService/ResendConfirmEmail"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -37,6 +39,8 @@ type AuthServiceClient interface {
 	Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*RefreshResponse, error)
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
 	ResetPasswordConfirmed(ctx context.Context, in *ResetPasswordConfirmedRequest, opts ...grpc.CallOption) (*ResetPasswordConfirmedResponse, error)
+	ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error)
+	ResendConfirmEmail(ctx context.Context, in *ResendConfirmEmailRequest, opts ...grpc.CallOption) (*ResendConfirmEmailResponse, error)
 }
 
 type authServiceClient struct {
@@ -107,6 +111,26 @@ func (c *authServiceClient) ResetPasswordConfirmed(ctx context.Context, in *Rese
 	return out, nil
 }
 
+func (c *authServiceClient) ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfirmEmailResponse)
+	err := c.cc.Invoke(ctx, AuthService_ConfirmEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ResendConfirmEmail(ctx context.Context, in *ResendConfirmEmailRequest, opts ...grpc.CallOption) (*ResendConfirmEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResendConfirmEmailResponse)
+	err := c.cc.Invoke(ctx, AuthService_ResendConfirmEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -117,6 +141,8 @@ type AuthServiceServer interface {
 	Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error)
 	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
 	ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error)
+	ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error)
+	ResendConfirmEmail(context.Context, *ResendConfirmEmailRequest) (*ResendConfirmEmailResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -144,6 +170,12 @@ func (UnimplementedAuthServiceServer) ResetPassword(context.Context, *ResetPassw
 }
 func (UnimplementedAuthServiceServer) ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPasswordConfirmed not implemented")
+}
+func (UnimplementedAuthServiceServer) ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfirmEmail not implemented")
+}
+func (UnimplementedAuthServiceServer) ResendConfirmEmail(context.Context, *ResendConfirmEmailRequest) (*ResendConfirmEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResendConfirmEmail not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -274,6 +306,42 @@ func _AuthService_ResetPasswordConfirmed_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_ConfirmEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConfirmEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ConfirmEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ConfirmEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ConfirmEmail(ctx, req.(*ConfirmEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ResendConfirmEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResendConfirmEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ResendConfirmEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ResendConfirmEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ResendConfirmEmail(ctx, req.(*ResendConfirmEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +372,14 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResetPasswordConfirmed",
 			Handler:    _AuthService_ResetPasswordConfirmed_Handler,
+		},
+		{
+			MethodName: "ConfirmEmail",
+			Handler:    _AuthService_ConfirmEmail_Handler,
+		},
+		{
+			MethodName: "ResendConfirmEmail",
+			Handler:    _AuthService_ResendConfirmEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

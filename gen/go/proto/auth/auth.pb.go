@@ -606,6 +606,166 @@ func (x *ResetPasswordConfirmedResponse) GetRefreshToken() string {
 	return ""
 }
 
+type ConfirmEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfirmEmailRequest) Reset() {
+	*x = ConfirmEmailRequest{}
+	mi := &file_auth_auth_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfirmEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfirmEmailRequest) ProtoMessage() {}
+
+func (x *ConfirmEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfirmEmailRequest.ProtoReflect.Descriptor instead.
+func (*ConfirmEmailRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ConfirmEmailRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+type ConfirmEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfirmEmailResponse) Reset() {
+	*x = ConfirmEmailResponse{}
+	mi := &file_auth_auth_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfirmEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfirmEmailResponse) ProtoMessage() {}
+
+func (x *ConfirmEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfirmEmailResponse.ProtoReflect.Descriptor instead.
+func (*ConfirmEmailResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{13}
+}
+
+type ResendConfirmEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResendConfirmEmailRequest) Reset() {
+	*x = ResendConfirmEmailRequest{}
+	mi := &file_auth_auth_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResendConfirmEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResendConfirmEmailRequest) ProtoMessage() {}
+
+func (x *ResendConfirmEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResendConfirmEmailRequest.ProtoReflect.Descriptor instead.
+func (*ResendConfirmEmailRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ResendConfirmEmailRequest) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+type ResendConfirmEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResendConfirmEmailResponse) Reset() {
+	*x = ResendConfirmEmailResponse{}
+	mi := &file_auth_auth_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResendConfirmEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResendConfirmEmailResponse) ProtoMessage() {}
+
+func (x *ResendConfirmEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResendConfirmEmailResponse.ProtoReflect.Descriptor instead.
+func (*ResendConfirmEmailResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{15}
+}
+
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
@@ -641,14 +801,22 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"h\n" +
 	"\x1eResetPasswordConfirmedResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2\x96\x03\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\")\n" +
+	"\x13ConfirmEmailRequest\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\"\x16\n" +
+	"\x14ConfirmEmailResponse\"7\n" +
+	"\x19ResendConfirmEmailRequest\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\"\x1c\n" +
+	"\x1aResendConfirmEmailResponse2\xb6\x04\n" +
 	"\vAuthService\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x123\n" +
 	"\x06Verify\x12\x13.auth.VerifyRequest\x1a\x14.auth.VerifyResponse\x126\n" +
 	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponse\x12H\n" +
 	"\rResetPassword\x12\x1a.auth.ResetPasswordRequest\x1a\x1b.auth.ResetPasswordResponse\x12c\n" +
-	"\x16ResetPasswordConfirmed\x12#.auth.ResetPasswordConfirmedRequest\x1a$.auth.ResetPasswordConfirmedResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/auth;authb\x06proto3"
+	"\x16ResetPasswordConfirmed\x12#.auth.ResetPasswordConfirmedRequest\x1a$.auth.ResetPasswordConfirmedResponse\x12E\n" +
+	"\fConfirmEmail\x12\x19.auth.ConfirmEmailRequest\x1a\x1a.auth.ConfirmEmailResponse\x12W\n" +
+	"\x12ResendConfirmEmail\x12\x1f.auth.ResendConfirmEmailRequest\x1a .auth.ResendConfirmEmailResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/auth;authb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -662,7 +830,7 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_auth_auth_proto_goTypes = []any{
 	(*RegisterRequest)(nil),                // 0: auth.RegisterRequest
 	(*RegisterResponse)(nil),               // 1: auth.RegisterResponse
@@ -676,24 +844,32 @@ var file_auth_auth_proto_goTypes = []any{
 	(*ResetPasswordResponse)(nil),          // 9: auth.ResetPasswordResponse
 	(*ResetPasswordConfirmedRequest)(nil),  // 10: auth.ResetPasswordConfirmedRequest
 	(*ResetPasswordConfirmedResponse)(nil), // 11: auth.ResetPasswordConfirmedResponse
-	(*common.User)(nil),                    // 12: common.User
+	(*ConfirmEmailRequest)(nil),            // 12: auth.ConfirmEmailRequest
+	(*ConfirmEmailResponse)(nil),           // 13: auth.ConfirmEmailResponse
+	(*ResendConfirmEmailRequest)(nil),      // 14: auth.ResendConfirmEmailRequest
+	(*ResendConfirmEmailResponse)(nil),     // 15: auth.ResendConfirmEmailResponse
+	(*common.User)(nil),                    // 16: common.User
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	12, // 0: auth.VerifyResponse.user:type_name -> common.User
+	16, // 0: auth.VerifyResponse.user:type_name -> common.User
 	0,  // 1: auth.AuthService.Register:input_type -> auth.RegisterRequest
 	2,  // 2: auth.AuthService.Login:input_type -> auth.LoginRequest
 	4,  // 3: auth.AuthService.Verify:input_type -> auth.VerifyRequest
 	6,  // 4: auth.AuthService.Refresh:input_type -> auth.RefreshRequest
 	8,  // 5: auth.AuthService.ResetPassword:input_type -> auth.ResetPasswordRequest
 	10, // 6: auth.AuthService.ResetPasswordConfirmed:input_type -> auth.ResetPasswordConfirmedRequest
-	1,  // 7: auth.AuthService.Register:output_type -> auth.RegisterResponse
-	3,  // 8: auth.AuthService.Login:output_type -> auth.LoginResponse
-	5,  // 9: auth.AuthService.Verify:output_type -> auth.VerifyResponse
-	7,  // 10: auth.AuthService.Refresh:output_type -> auth.RefreshResponse
-	9,  // 11: auth.AuthService.ResetPassword:output_type -> auth.ResetPasswordResponse
-	11, // 12: auth.AuthService.ResetPasswordConfirmed:output_type -> auth.ResetPasswordConfirmedResponse
-	7,  // [7:13] is the sub-list for method output_type
-	1,  // [1:7] is the sub-list for method input_type
+	12, // 7: auth.AuthService.ConfirmEmail:input_type -> auth.ConfirmEmailRequest
+	14, // 8: auth.AuthService.ResendConfirmEmail:input_type -> auth.ResendConfirmEmailRequest
+	1,  // 9: auth.AuthService.Register:output_type -> auth.RegisterResponse
+	3,  // 10: auth.AuthService.Login:output_type -> auth.LoginResponse
+	5,  // 11: auth.AuthService.Verify:output_type -> auth.VerifyResponse
+	7,  // 12: auth.AuthService.Refresh:output_type -> auth.RefreshResponse
+	9,  // 13: auth.AuthService.ResetPassword:output_type -> auth.ResetPasswordResponse
+	11, // 14: auth.AuthService.ResetPasswordConfirmed:output_type -> auth.ResetPasswordConfirmedResponse
+	13, // 15: auth.AuthService.ConfirmEmail:output_type -> auth.ConfirmEmailResponse
+	15, // 16: auth.AuthService.ResendConfirmEmail:output_type -> auth.ResendConfirmEmailResponse
+	9,  // [9:17] is the sub-list for method output_type
+	1,  // [1:9] is the sub-list for method input_type
 	1,  // [1:1] is the sub-list for extension type_name
 	1,  // [1:1] is the sub-list for extension extendee
 	0,  // [0:1] is the sub-list for field type_name
@@ -710,7 +886,7 @@ func file_auth_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
