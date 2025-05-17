@@ -398,31 +398,31 @@ func (x *GetByUsernameResponse) GetUser() *common.User {
 	return nil
 }
 
-type UpdateByIDRequest struct {
+type UpdateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Username      *string                `protobuf:"bytes,2,opt,name=username,proto3,oneof" json:"username,omitempty"`
-	Email         *string                `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	FirstName     *string                `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
-	LastName      *string                `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	NewUsername   *string                `protobuf:"bytes,2,opt,name=new_username,json=newUsername,proto3,oneof" json:"new_username,omitempty"`
+	NewEmail      *string                `protobuf:"bytes,3,opt,name=new_email,json=newEmail,proto3,oneof" json:"new_email,omitempty"`
+	NewFirstName  *string                `protobuf:"bytes,4,opt,name=new_first_name,json=newFirstName,proto3,oneof" json:"new_first_name,omitempty"`
+	NewLastName   *string                `protobuf:"bytes,5,opt,name=new_last_name,json=newLastName,proto3,oneof" json:"new_last_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateByIDRequest) Reset() {
-	*x = UpdateByIDRequest{}
+func (x *UpdateRequest) Reset() {
+	*x = UpdateRequest{}
 	mi := &file_user_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateByIDRequest) String() string {
+func (x *UpdateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateByIDRequest) ProtoMessage() {}
+func (*UpdateRequest) ProtoMessage() {}
 
-func (x *UpdateByIDRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -434,67 +434,67 @@ func (x *UpdateByIDRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateByIDRequest.ProtoReflect.Descriptor instead.
-func (*UpdateByIDRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
+func (*UpdateRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateByIDRequest) GetId() int32 {
+func (x *UpdateRequest) GetUsername() string {
 	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *UpdateByIDRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
+		return x.Username
 	}
 	return ""
 }
 
-func (x *UpdateByIDRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
+func (x *UpdateRequest) GetNewUsername() string {
+	if x != nil && x.NewUsername != nil {
+		return *x.NewUsername
 	}
 	return ""
 }
 
-func (x *UpdateByIDRequest) GetFirstName() string {
-	if x != nil && x.FirstName != nil {
-		return *x.FirstName
+func (x *UpdateRequest) GetNewEmail() string {
+	if x != nil && x.NewEmail != nil {
+		return *x.NewEmail
 	}
 	return ""
 }
 
-func (x *UpdateByIDRequest) GetLastName() string {
-	if x != nil && x.LastName != nil {
-		return *x.LastName
+func (x *UpdateRequest) GetNewFirstName() string {
+	if x != nil && x.NewFirstName != nil {
+		return *x.NewFirstName
 	}
 	return ""
 }
 
-type UpdateByIDResponse struct {
+func (x *UpdateRequest) GetNewLastName() string {
+	if x != nil && x.NewLastName != nil {
+		return *x.NewLastName
+	}
+	return ""
+}
+
+type UpdateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *common.User           `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateByIDResponse) Reset() {
-	*x = UpdateByIDResponse{}
+func (x *UpdateResponse) Reset() {
+	*x = UpdateResponse{}
 	mi := &file_user_user_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateByIDResponse) String() string {
+func (x *UpdateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateByIDResponse) ProtoMessage() {}
+func (*UpdateResponse) ProtoMessage() {}
 
-func (x *UpdateByIDResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -506,12 +506,12 @@ func (x *UpdateByIDResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateByIDResponse.ProtoReflect.Descriptor instead.
-func (*UpdateByIDResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateResponse.ProtoReflect.Descriptor instead.
+func (*UpdateResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *UpdateByIDResponse) GetUser() *common.User {
+func (x *UpdateResponse) GetUser() *common.User {
 	if x != nil {
 		return x.User
 	}
@@ -845,20 +845,19 @@ const file_user_user_proto_rawDesc = "" +
 	"\x14GetByUsernameRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"9\n" +
 	"\x15GetByUsernameResponse\x12 \n" +
-	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"\xd9\x01\n" +
-	"\x11UpdateByIDRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1f\n" +
-	"\busername\x18\x02 \x01(\tH\x00R\busername\x88\x01\x01\x12\x19\n" +
-	"\x05email\x18\x03 \x01(\tH\x01R\x05email\x88\x01\x01\x12\"\n" +
+	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"\x8d\x02\n" +
+	"\rUpdateRequest\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12&\n" +
+	"\fnew_username\x18\x02 \x01(\tH\x00R\vnewUsername\x88\x01\x01\x12 \n" +
+	"\tnew_email\x18\x03 \x01(\tH\x01R\bnewEmail\x88\x01\x01\x12)\n" +
+	"\x0enew_first_name\x18\x04 \x01(\tH\x02R\fnewFirstName\x88\x01\x01\x12'\n" +
+	"\rnew_last_name\x18\x05 \x01(\tH\x03R\vnewLastName\x88\x01\x01B\x0f\n" +
+	"\r_new_usernameB\f\n" +
 	"\n" +
-	"first_name\x18\x04 \x01(\tH\x02R\tfirstName\x88\x01\x01\x12 \n" +
-	"\tlast_name\x18\x05 \x01(\tH\x03R\blastName\x88\x01\x01B\v\n" +
-	"\t_usernameB\b\n" +
-	"\x06_emailB\r\n" +
-	"\v_first_nameB\f\n" +
-	"\n" +
-	"_last_name\"6\n" +
-	"\x12UpdateByIDResponse\x12 \n" +
+	"_new_emailB\x11\n" +
+	"\x0f_new_first_nameB\x10\n" +
+	"\x0e_new_last_name\"2\n" +
+	"\x0eUpdateResponse\x12 \n" +
 	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"d\n" +
 	"\x1dResetPasswordConfirmedRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12'\n" +
@@ -876,15 +875,14 @@ const file_user_user_proto_rawDesc = "" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
 	"\x13ConfirmEmailRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
-	"\x14ConfirmEmailResponse2\xd4\x04\n" +
+	"\x14ConfirmEmailResponse2\xc8\x04\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x123\n" +
 	"\x06GetAll\x12\x13.user.GetAllRequest\x1a\x14.user.GetAllResponse\x126\n" +
 	"\aGetByID\x12\x14.user.GetByIDRequest\x1a\x15.user.GetByIDResponse\x12H\n" +
-	"\rGetByUsername\x12\x1a.user.GetByUsernameRequest\x1a\x1b.user.GetByUsernameResponse\x12?\n" +
-	"\n" +
-	"UpdateByID\x12\x17.user.UpdateByIDRequest\x1a\x18.user.UpdateByIDResponse\x12c\n" +
+	"\rGetByUsername\x12\x1a.user.GetByUsernameRequest\x1a\x1b.user.GetByUsernameResponse\x123\n" +
+	"\x06Update\x12\x13.user.UpdateRequest\x1a\x14.user.UpdateResponse\x12c\n" +
 	"\x16ResetPasswordConfirmed\x12#.user.ResetPasswordConfirmedRequest\x1a$.user.ResetPasswordConfirmedResponse\x12`\n" +
 	"\x15VerifyUserCredentials\x12\".user.VerifyUserCredentialsRequest\x1a#.user.VerifyUserCredentialsResponse\x12E\n" +
 	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
@@ -911,8 +909,8 @@ var file_user_user_proto_goTypes = []any{
 	(*GetByIDResponse)(nil),                // 5: user.GetByIDResponse
 	(*GetByUsernameRequest)(nil),           // 6: user.GetByUsernameRequest
 	(*GetByUsernameResponse)(nil),          // 7: user.GetByUsernameResponse
-	(*UpdateByIDRequest)(nil),              // 8: user.UpdateByIDRequest
-	(*UpdateByIDResponse)(nil),             // 9: user.UpdateByIDResponse
+	(*UpdateRequest)(nil),                  // 8: user.UpdateRequest
+	(*UpdateResponse)(nil),                 // 9: user.UpdateResponse
 	(*ResetPasswordConfirmedRequest)(nil),  // 10: user.ResetPasswordConfirmedRequest
 	(*ResetPasswordConfirmedResponse)(nil), // 11: user.ResetPasswordConfirmedResponse
 	(*VerifyUserCredentialsRequest)(nil),   // 12: user.VerifyUserCredentialsRequest
@@ -925,12 +923,12 @@ var file_user_user_proto_depIdxs = []int32{
 	16, // 0: user.GetAllResponse.users:type_name -> common.User
 	16, // 1: user.GetByIDResponse.user:type_name -> common.User
 	16, // 2: user.GetByUsernameResponse.user:type_name -> common.User
-	16, // 3: user.UpdateByIDResponse.user:type_name -> common.User
+	16, // 3: user.UpdateResponse.user:type_name -> common.User
 	0,  // 4: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	2,  // 5: user.UserService.GetAll:input_type -> user.GetAllRequest
 	4,  // 6: user.UserService.GetByID:input_type -> user.GetByIDRequest
 	6,  // 7: user.UserService.GetByUsername:input_type -> user.GetByUsernameRequest
-	8,  // 8: user.UserService.UpdateByID:input_type -> user.UpdateByIDRequest
+	8,  // 8: user.UserService.Update:input_type -> user.UpdateRequest
 	10, // 9: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
 	12, // 10: user.UserService.VerifyUserCredentials:input_type -> user.VerifyUserCredentialsRequest
 	14, // 11: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
@@ -938,7 +936,7 @@ var file_user_user_proto_depIdxs = []int32{
 	3,  // 13: user.UserService.GetAll:output_type -> user.GetAllResponse
 	5,  // 14: user.UserService.GetByID:output_type -> user.GetByIDResponse
 	7,  // 15: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
-	9,  // 16: user.UserService.UpdateByID:output_type -> user.UpdateByIDResponse
+	9,  // 16: user.UserService.Update:output_type -> user.UpdateResponse
 	11, // 17: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
 	13, // 18: user.UserService.VerifyUserCredentials:output_type -> user.VerifyUserCredentialsResponse
 	15, // 19: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse

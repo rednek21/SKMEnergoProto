@@ -11,7 +11,7 @@ service UserService {
   rpc GetAll (GetAllRequest) returns (GetAllResponse);
   rpc GetByID (GetByIDRequest) returns (GetByIDResponse);
   rpc GetByUsername (GetByUsernameRequest) returns (GetByUsernameResponse);
-  rpc UpdateByID (UpdateByIDRequest) returns (UpdateByIDResponse);
+  rpc Update (UpdateRequest) returns (UpdateResponse);
   rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
   rpc VerifyUserCredentials(VerifyUserCredentialsRequest) returns (VerifyUserCredentialsResponse);
   rpc ConfirmEmail(ConfirmEmailRequest) returns (ConfirmEmailResponse);
@@ -47,14 +47,14 @@ message GetByUsernameResponse {
   common.User user = 1;
 }
 
-message UpdateByIDRequest {
-  int32 id = 1;
-  optional string username = 2;
-  optional string email = 3;
-  optional string first_name = 4;
-  optional string last_name = 5;
+message UpdateRequest {
+  string username = 1;
+  optional string new_username = 2;
+  optional string new_email = 3;
+  optional string new_first_name = 4;
+  optional string new_last_name = 5;
 }
-message UpdateByIDResponse {
+message UpdateResponse {
   common.User user = 1;
 }
 

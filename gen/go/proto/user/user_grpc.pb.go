@@ -23,7 +23,7 @@ const (
 	UserService_GetAll_FullMethodName                 = "/user.UserService/GetAll"
 	UserService_GetByID_FullMethodName                = "/user.UserService/GetByID"
 	UserService_GetByUsername_FullMethodName          = "/user.UserService/GetByUsername"
-	UserService_UpdateByID_FullMethodName             = "/user.UserService/UpdateByID"
+	UserService_Update_FullMethodName                 = "/user.UserService/Update"
 	UserService_ResetPasswordConfirmed_FullMethodName = "/user.UserService/ResetPasswordConfirmed"
 	UserService_VerifyUserCredentials_FullMethodName  = "/user.UserService/VerifyUserCredentials"
 	UserService_ConfirmEmail_FullMethodName           = "/user.UserService/ConfirmEmail"
@@ -37,7 +37,7 @@ type UserServiceClient interface {
 	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
 	GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetByIDResponse, error)
 	GetByUsername(ctx context.Context, in *GetByUsernameRequest, opts ...grpc.CallOption) (*GetByUsernameResponse, error)
-	UpdateByID(ctx context.Context, in *UpdateByIDRequest, opts ...grpc.CallOption) (*UpdateByIDResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	ResetPasswordConfirmed(ctx context.Context, in *ResetPasswordConfirmedRequest, opts ...grpc.CallOption) (*ResetPasswordConfirmedResponse, error)
 	VerifyUserCredentials(ctx context.Context, in *VerifyUserCredentialsRequest, opts ...grpc.CallOption) (*VerifyUserCredentialsResponse, error)
 	ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error)
@@ -91,10 +91,10 @@ func (c *userServiceClient) GetByUsername(ctx context.Context, in *GetByUsername
 	return out, nil
 }
 
-func (c *userServiceClient) UpdateByID(ctx context.Context, in *UpdateByIDRequest, opts ...grpc.CallOption) (*UpdateByIDResponse, error) {
+func (c *userServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateByIDResponse)
-	err := c.cc.Invoke(ctx, UserService_UpdateByID_FullMethodName, in, out, cOpts...)
+	out := new(UpdateResponse)
+	err := c.cc.Invoke(ctx, UserService_Update_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +139,7 @@ type UserServiceServer interface {
 	GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error)
 	GetByID(context.Context, *GetByIDRequest) (*GetByIDResponse, error)
 	GetByUsername(context.Context, *GetByUsernameRequest) (*GetByUsernameResponse, error)
-	UpdateByID(context.Context, *UpdateByIDRequest) (*UpdateByIDResponse, error)
+	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error)
 	VerifyUserCredentials(context.Context, *VerifyUserCredentialsRequest) (*VerifyUserCredentialsResponse, error)
 	ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error)
@@ -165,8 +165,8 @@ func (UnimplementedUserServiceServer) GetByID(context.Context, *GetByIDRequest) 
 func (UnimplementedUserServiceServer) GetByUsername(context.Context, *GetByUsernameRequest) (*GetByUsernameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByUsername not implemented")
 }
-func (UnimplementedUserServiceServer) UpdateByID(context.Context, *UpdateByIDRequest) (*UpdateByIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateByID not implemented")
+func (UnimplementedUserServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedUserServiceServer) ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPasswordConfirmed not implemented")
@@ -270,20 +270,20 @@ func _UserService_GetByUsername_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_UpdateByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateByIDRequest)
+func _UserService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).UpdateByID(ctx, in)
+		return srv.(UserServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_UpdateByID_FullMethodName,
+		FullMethod: UserService_Update_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateByID(ctx, req.(*UpdateByIDRequest))
+		return srv.(UserServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -366,8 +366,8 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_GetByUsername_Handler,
 		},
 		{
-			MethodName: "UpdateByID",
-			Handler:    _UserService_UpdateByID_Handler,
+			MethodName: "Update",
+			Handler:    _UserService_Update_Handler,
 		},
 		{
 			MethodName: "ResetPasswordConfirmed",
