@@ -399,14 +399,15 @@ func (x *GetByUsernameResponse) GetUser() *common.User {
 }
 
 type UpdateRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	NewUsername   *string                `protobuf:"bytes,2,opt,name=new_username,json=newUsername,proto3,oneof" json:"new_username,omitempty"`
-	NewEmail      *string                `protobuf:"bytes,3,opt,name=new_email,json=newEmail,proto3,oneof" json:"new_email,omitempty"`
-	NewFirstName  *string                `protobuf:"bytes,4,opt,name=new_first_name,json=newFirstName,proto3,oneof" json:"new_first_name,omitempty"`
-	NewLastName   *string                `protobuf:"bytes,5,opt,name=new_last_name,json=newLastName,proto3,oneof" json:"new_last_name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	TargetUserId      int32                  `protobuf:"varint,1,opt,name=target_user_id,json=targetUserId,proto3" json:"target_user_id,omitempty"`
+	RequesterUsername string                 `protobuf:"bytes,2,opt,name=requester_username,json=requesterUsername,proto3" json:"requester_username,omitempty"`
+	NewUsername       *string                `protobuf:"bytes,3,opt,name=new_username,json=newUsername,proto3,oneof" json:"new_username,omitempty"`
+	NewEmail          *string                `protobuf:"bytes,4,opt,name=new_email,json=newEmail,proto3,oneof" json:"new_email,omitempty"`
+	NewFirstName      *string                `protobuf:"bytes,5,opt,name=new_first_name,json=newFirstName,proto3,oneof" json:"new_first_name,omitempty"`
+	NewLastName       *string                `protobuf:"bytes,6,opt,name=new_last_name,json=newLastName,proto3,oneof" json:"new_last_name,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *UpdateRequest) Reset() {
@@ -439,9 +440,16 @@ func (*UpdateRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateRequest) GetUsername() string {
+func (x *UpdateRequest) GetTargetUserId() int32 {
 	if x != nil {
-		return x.Username
+		return x.TargetUserId
+	}
+	return 0
+}
+
+func (x *UpdateRequest) GetRequesterUsername() string {
+	if x != nil {
+		return x.RequesterUsername
 	}
 	return ""
 }
@@ -845,13 +853,14 @@ const file_user_user_proto_rawDesc = "" +
 	"\x14GetByUsernameRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"9\n" +
 	"\x15GetByUsernameResponse\x12 \n" +
-	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"\x8d\x02\n" +
-	"\rUpdateRequest\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12&\n" +
-	"\fnew_username\x18\x02 \x01(\tH\x00R\vnewUsername\x88\x01\x01\x12 \n" +
-	"\tnew_email\x18\x03 \x01(\tH\x01R\bnewEmail\x88\x01\x01\x12)\n" +
-	"\x0enew_first_name\x18\x04 \x01(\tH\x02R\fnewFirstName\x88\x01\x01\x12'\n" +
-	"\rnew_last_name\x18\x05 \x01(\tH\x03R\vnewLastName\x88\x01\x01B\x0f\n" +
+	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"\xc6\x02\n" +
+	"\rUpdateRequest\x12$\n" +
+	"\x0etarget_user_id\x18\x01 \x01(\x05R\ftargetUserId\x12-\n" +
+	"\x12requester_username\x18\x02 \x01(\tR\x11requesterUsername\x12&\n" +
+	"\fnew_username\x18\x03 \x01(\tH\x00R\vnewUsername\x88\x01\x01\x12 \n" +
+	"\tnew_email\x18\x04 \x01(\tH\x01R\bnewEmail\x88\x01\x01\x12)\n" +
+	"\x0enew_first_name\x18\x05 \x01(\tH\x02R\fnewFirstName\x88\x01\x01\x12'\n" +
+	"\rnew_last_name\x18\x06 \x01(\tH\x03R\vnewLastName\x88\x01\x01B\x0f\n" +
 	"\r_new_usernameB\f\n" +
 	"\n" +
 	"_new_emailB\x11\n" +
