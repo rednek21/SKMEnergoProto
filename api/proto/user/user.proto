@@ -8,13 +8,19 @@ import "common/common.proto";
 
 service UserService {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
-  rpc GetAll (GetAllRequest) returns (GetAllResponse);
-  rpc GetByID (GetByIDRequest) returns (GetByIDResponse);
+  rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse);
+  rpc GetUserByID (GetUserByIDRequest) returns (GetUserByIDResponse);
   rpc GetByUsername (GetByUsernameRequest) returns (GetByUsernameResponse);
-  rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
   rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
   rpc VerifyUserCredentials(VerifyUserCredentialsRequest) returns (VerifyUserCredentialsResponse);
   rpc ConfirmEmail(ConfirmEmailRequest) returns (ConfirmEmailResponse);
+
+  rpc CheckUsernameExistence (CheckUsernameExistenceRequest) returns (CheckUsernameExistenceResponse);
+  rpc CheckEmailExistence (CheckEmailExistenceRequest) returns (CheckEmailExistenceResponse);
+
+  rpc GetAllRoles (GetAllRolesRequest) returns (GetAllRolesResponse);
+  rpc GetAllPermissions (GetAllPermissionsRequest) returns (GetAllPermissionsResponse);
 }
 
 message CreateUserRequest {
@@ -28,15 +34,15 @@ message CreateUserResponse {
   repeated string permissions = 3;
 }
 
-message GetAllRequest {}
-message GetAllResponse {
+message GetAllUsersRequest {}
+message GetAllUsersResponse {
   repeated common.User users = 1;
 }
 
-message GetByIDRequest {
+message GetUserByIDRequest {
   int32 id = 1;
 }
-message GetByIDResponse {
+message GetUserByIDResponse {
   common.User user = 1;
 }
 
@@ -47,7 +53,17 @@ message GetByUsernameResponse {
   common.User user = 1;
 }
 
-message UpdateRequest {
+message CheckUsernameExistenceRequest {
+  string username = 1;
+}
+message CheckUsernameExistenceResponse {}
+
+message CheckEmailExistenceRequest {
+  string email = 1;
+}
+message CheckEmailExistenceResponse {}
+
+message UpdateUserRequest {
   int32 target_user_id = 1;
   string requester_username = 2;
   optional string new_username = 3;
@@ -55,7 +71,7 @@ message UpdateRequest {
   optional string new_first_name = 5;
   optional string new_last_name = 6;
 }
-message UpdateResponse {
+message UpdateUserResponse {
   common.User user = 1;
 }
 
@@ -83,3 +99,13 @@ message ConfirmEmailRequest {
   string username = 1;
 }
 message ConfirmEmailResponse {}
+
+message GetAllRolesRequest {}
+message GetAllRolesResponse {
+  repeated common.Role roles = 1;
+}
+
+message GetAllPermissionsRequest {}
+message GetAllPermissionsResponse {
+  repeated common.Permission permissions = 1;
+}
