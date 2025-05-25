@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package role;
+
+option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/proto/role;role";
+
+import "common/common.proto";
+
+service RoleService {
+  rpc Create (CreateRequest) returns (CreateResponse);
+  rpc GetAll (GetAllRequest) returns (GetAllResponse);
+  rpc Update (UpdateRequest) returns (UpdateResponse);
+}
+
+message GetAllRequest {}
+message GetAllResponse {
+  repeated common.Role roles = 1;
+}
+
+message CreateRequest {
+  string name = 1;
+  string description = 2;
+  repeated int32 permission_ids = 3;
+}
+message CreateResponse {}
+
+message UpdateRequest {
+  int32 role_id = 1;
+  optional string name = 2;
+  optional string description = 3;
+  repeated int32 permission_ids = 4;
+}
+message UpdateResponse {
+  common.Role role = 1;
+}

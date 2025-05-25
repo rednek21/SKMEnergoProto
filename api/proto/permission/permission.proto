@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package permission;
+
+option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/proto/permission;permission";
+
+import "common/common.proto";
+
+service PermissionService {
+  rpc GetAll (GetAllRequest) returns (GetAllResponse);
+}
+
+message GetAllRequest {}
+message GetAllResponse {
+  repeated common.Permission permissions = 1;
+}
