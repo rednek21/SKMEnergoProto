@@ -13,7 +13,7 @@ service UserService {
   rpc GetByUsername (GetByUsernameRequest) returns (GetByUsernameResponse);
   rpc Update (UpdateRequest) returns (UpdateResponse);
   rpc ResetPasswordConfirmed (ResetPasswordConfirmedRequest) returns (ResetPasswordConfirmedResponse);
-  rpc VerifyCredentials(VerifyUserCredentialsRequest) returns (VerifyUserCredentialsResponse);
+  rpc VerifyCredentials(VerifyCredentialsRequest) returns (VerifyCredentialsResponse);
   rpc ConfirmEmail(ConfirmEmailRequest) returns (ConfirmEmailResponse);
   rpc CheckUsernameExistence (CheckUsernameExistenceRequest) returns (CheckUsernameExistenceResponse);
   rpc CheckEmailExistence (CheckEmailExistenceRequest) returns (CheckEmailExistenceResponse);
@@ -81,11 +81,11 @@ message ResetPasswordConfirmedResponse {
   repeated string permissions = 3;
 }
 
-message VerifyUserCredentialsRequest {
+message VerifyCredentialsRequest {
   string username = 1;
   string password = 2;
 }
-message VerifyUserCredentialsResponse {
+message VerifyCredentialsResponse {
   string username = 1;
   repeated string roles = 2;
   repeated string permissions = 3;

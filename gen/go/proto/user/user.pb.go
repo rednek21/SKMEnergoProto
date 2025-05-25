@@ -798,7 +798,7 @@ func (x *ResetPasswordConfirmedResponse) GetPermissions() []string {
 	return nil
 }
 
-type VerifyUserCredentialsRequest struct {
+type VerifyCredentialsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
@@ -806,20 +806,20 @@ type VerifyUserCredentialsRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VerifyUserCredentialsRequest) Reset() {
-	*x = VerifyUserCredentialsRequest{}
+func (x *VerifyCredentialsRequest) Reset() {
+	*x = VerifyCredentialsRequest{}
 	mi := &file_user_user_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VerifyUserCredentialsRequest) String() string {
+func (x *VerifyCredentialsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VerifyUserCredentialsRequest) ProtoMessage() {}
+func (*VerifyCredentialsRequest) ProtoMessage() {}
 
-func (x *VerifyUserCredentialsRequest) ProtoReflect() protoreflect.Message {
+func (x *VerifyCredentialsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -831,26 +831,26 @@ func (x *VerifyUserCredentialsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VerifyUserCredentialsRequest.ProtoReflect.Descriptor instead.
-func (*VerifyUserCredentialsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use VerifyCredentialsRequest.ProtoReflect.Descriptor instead.
+func (*VerifyCredentialsRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *VerifyUserCredentialsRequest) GetUsername() string {
+func (x *VerifyCredentialsRequest) GetUsername() string {
 	if x != nil {
 		return x.Username
 	}
 	return ""
 }
 
-func (x *VerifyUserCredentialsRequest) GetPassword() string {
+func (x *VerifyCredentialsRequest) GetPassword() string {
 	if x != nil {
 		return x.Password
 	}
 	return ""
 }
 
-type VerifyUserCredentialsResponse struct {
+type VerifyCredentialsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
@@ -859,20 +859,20 @@ type VerifyUserCredentialsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VerifyUserCredentialsResponse) Reset() {
-	*x = VerifyUserCredentialsResponse{}
+func (x *VerifyCredentialsResponse) Reset() {
+	*x = VerifyCredentialsResponse{}
 	mi := &file_user_user_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VerifyUserCredentialsResponse) String() string {
+func (x *VerifyCredentialsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VerifyUserCredentialsResponse) ProtoMessage() {}
+func (*VerifyCredentialsResponse) ProtoMessage() {}
 
-func (x *VerifyUserCredentialsResponse) ProtoReflect() protoreflect.Message {
+func (x *VerifyCredentialsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -884,26 +884,26 @@ func (x *VerifyUserCredentialsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VerifyUserCredentialsResponse.ProtoReflect.Descriptor instead.
-func (*VerifyUserCredentialsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use VerifyCredentialsResponse.ProtoReflect.Descriptor instead.
+func (*VerifyCredentialsResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *VerifyUserCredentialsResponse) GetUsername() string {
+func (x *VerifyCredentialsResponse) GetUsername() string {
 	if x != nil {
 		return x.Username
 	}
 	return ""
 }
 
-func (x *VerifyUserCredentialsResponse) GetRoles() []string {
+func (x *VerifyCredentialsResponse) GetRoles() []string {
 	if x != nil {
 		return x.Roles
 	}
 	return nil
 }
 
-func (x *VerifyUserCredentialsResponse) GetPermissions() []string {
+func (x *VerifyCredentialsResponse) GetPermissions() []string {
 	if x != nil {
 		return x.Permissions
 	}
@@ -1040,25 +1040,25 @@ const file_user_user_proto_rawDesc = "" +
 	"\x1eResetPasswordConfirmedResponse\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"V\n" +
-	"\x1cVerifyUserCredentialsRequest\x12\x1a\n" +
+	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"R\n" +
+	"\x18VerifyCredentialsRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"s\n" +
-	"\x1dVerifyUserCredentialsResponse\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"o\n" +
+	"\x19VerifyCredentialsResponse\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
 	"\x13ConfirmEmailRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
-	"\x14ConfirmEmailResponse2\xf9\x05\n" +
+	"\x14ConfirmEmailResponse2\xf1\x05\n" +
 	"\vUserService\x123\n" +
 	"\x06Create\x12\x13.user.CreateRequest\x1a\x14.user.CreateResponse\x123\n" +
 	"\x06GetAll\x12\x13.user.GetAllRequest\x1a\x14.user.GetAllResponse\x126\n" +
 	"\aGetByID\x12\x14.user.GetByIDRequest\x1a\x15.user.GetByIDResponse\x12H\n" +
 	"\rGetByUsername\x12\x1a.user.GetByUsernameRequest\x1a\x1b.user.GetByUsernameResponse\x123\n" +
 	"\x06Update\x12\x13.user.UpdateRequest\x1a\x14.user.UpdateResponse\x12c\n" +
-	"\x16ResetPasswordConfirmed\x12#.user.ResetPasswordConfirmedRequest\x1a$.user.ResetPasswordConfirmedResponse\x12\\\n" +
-	"\x11VerifyCredentials\x12\".user.VerifyUserCredentialsRequest\x1a#.user.VerifyUserCredentialsResponse\x12E\n" +
+	"\x16ResetPasswordConfirmed\x12#.user.ResetPasswordConfirmedRequest\x1a$.user.ResetPasswordConfirmedResponse\x12T\n" +
+	"\x11VerifyCredentials\x12\x1e.user.VerifyCredentialsRequest\x1a\x1f.user.VerifyCredentialsResponse\x12E\n" +
 	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponse\x12c\n" +
 	"\x16CheckUsernameExistence\x12#.user.CheckUsernameExistenceRequest\x1a$.user.CheckUsernameExistenceResponse\x12Z\n" +
 	"\x13CheckEmailExistence\x12 .user.CheckEmailExistenceRequest\x1a!.user.CheckEmailExistenceResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
@@ -1093,8 +1093,8 @@ var file_user_user_proto_goTypes = []any{
 	(*UpdateResponse)(nil),                 // 13: user.UpdateResponse
 	(*ResetPasswordConfirmedRequest)(nil),  // 14: user.ResetPasswordConfirmedRequest
 	(*ResetPasswordConfirmedResponse)(nil), // 15: user.ResetPasswordConfirmedResponse
-	(*VerifyUserCredentialsRequest)(nil),   // 16: user.VerifyUserCredentialsRequest
-	(*VerifyUserCredentialsResponse)(nil),  // 17: user.VerifyUserCredentialsResponse
+	(*VerifyCredentialsRequest)(nil),       // 16: user.VerifyCredentialsRequest
+	(*VerifyCredentialsResponse)(nil),      // 17: user.VerifyCredentialsResponse
 	(*ConfirmEmailRequest)(nil),            // 18: user.ConfirmEmailRequest
 	(*ConfirmEmailResponse)(nil),           // 19: user.ConfirmEmailResponse
 	(*common.User)(nil),                    // 20: common.User
@@ -1110,7 +1110,7 @@ var file_user_user_proto_depIdxs = []int32{
 	6,  // 7: user.UserService.GetByUsername:input_type -> user.GetByUsernameRequest
 	12, // 8: user.UserService.Update:input_type -> user.UpdateRequest
 	14, // 9: user.UserService.ResetPasswordConfirmed:input_type -> user.ResetPasswordConfirmedRequest
-	16, // 10: user.UserService.VerifyCredentials:input_type -> user.VerifyUserCredentialsRequest
+	16, // 10: user.UserService.VerifyCredentials:input_type -> user.VerifyCredentialsRequest
 	18, // 11: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
 	8,  // 12: user.UserService.CheckUsernameExistence:input_type -> user.CheckUsernameExistenceRequest
 	10, // 13: user.UserService.CheckEmailExistence:input_type -> user.CheckEmailExistenceRequest
@@ -1120,7 +1120,7 @@ var file_user_user_proto_depIdxs = []int32{
 	7,  // 17: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
 	13, // 18: user.UserService.Update:output_type -> user.UpdateResponse
 	15, // 19: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
-	17, // 20: user.UserService.VerifyCredentials:output_type -> user.VerifyUserCredentialsResponse
+	17, // 20: user.UserService.VerifyCredentials:output_type -> user.VerifyCredentialsResponse
 	19, // 21: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
 	9,  // 22: user.UserService.CheckUsernameExistence:output_type -> user.CheckUsernameExistenceResponse
 	11, // 23: user.UserService.CheckEmailExistence:output_type -> user.CheckEmailExistenceResponse

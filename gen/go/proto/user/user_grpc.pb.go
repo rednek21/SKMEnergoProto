@@ -41,7 +41,7 @@ type UserServiceClient interface {
 	GetByUsername(ctx context.Context, in *GetByUsernameRequest, opts ...grpc.CallOption) (*GetByUsernameResponse, error)
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	ResetPasswordConfirmed(ctx context.Context, in *ResetPasswordConfirmedRequest, opts ...grpc.CallOption) (*ResetPasswordConfirmedResponse, error)
-	VerifyCredentials(ctx context.Context, in *VerifyUserCredentialsRequest, opts ...grpc.CallOption) (*VerifyUserCredentialsResponse, error)
+	VerifyCredentials(ctx context.Context, in *VerifyCredentialsRequest, opts ...grpc.CallOption) (*VerifyCredentialsResponse, error)
 	ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error)
 	CheckUsernameExistence(ctx context.Context, in *CheckUsernameExistenceRequest, opts ...grpc.CallOption) (*CheckUsernameExistenceResponse, error)
 	CheckEmailExistence(ctx context.Context, in *CheckEmailExistenceRequest, opts ...grpc.CallOption) (*CheckEmailExistenceResponse, error)
@@ -115,9 +115,9 @@ func (c *userServiceClient) ResetPasswordConfirmed(ctx context.Context, in *Rese
 	return out, nil
 }
 
-func (c *userServiceClient) VerifyCredentials(ctx context.Context, in *VerifyUserCredentialsRequest, opts ...grpc.CallOption) (*VerifyUserCredentialsResponse, error) {
+func (c *userServiceClient) VerifyCredentials(ctx context.Context, in *VerifyCredentialsRequest, opts ...grpc.CallOption) (*VerifyCredentialsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(VerifyUserCredentialsResponse)
+	out := new(VerifyCredentialsResponse)
 	err := c.cc.Invoke(ctx, UserService_VerifyCredentials_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -165,7 +165,7 @@ type UserServiceServer interface {
 	GetByUsername(context.Context, *GetByUsernameRequest) (*GetByUsernameResponse, error)
 	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error)
-	VerifyCredentials(context.Context, *VerifyUserCredentialsRequest) (*VerifyUserCredentialsResponse, error)
+	VerifyCredentials(context.Context, *VerifyCredentialsRequest) (*VerifyCredentialsResponse, error)
 	ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error)
 	CheckUsernameExistence(context.Context, *CheckUsernameExistenceRequest) (*CheckUsernameExistenceResponse, error)
 	CheckEmailExistence(context.Context, *CheckEmailExistenceRequest) (*CheckEmailExistenceResponse, error)
@@ -197,7 +197,7 @@ func (UnimplementedUserServiceServer) Update(context.Context, *UpdateRequest) (*
 func (UnimplementedUserServiceServer) ResetPasswordConfirmed(context.Context, *ResetPasswordConfirmedRequest) (*ResetPasswordConfirmedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPasswordConfirmed not implemented")
 }
-func (UnimplementedUserServiceServer) VerifyCredentials(context.Context, *VerifyUserCredentialsRequest) (*VerifyUserCredentialsResponse, error) {
+func (UnimplementedUserServiceServer) VerifyCredentials(context.Context, *VerifyCredentialsRequest) (*VerifyCredentialsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyCredentials not implemented")
 }
 func (UnimplementedUserServiceServer) ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error) {
@@ -339,7 +339,7 @@ func _UserService_ResetPasswordConfirmed_Handler(srv interface{}, ctx context.Co
 }
 
 func _UserService_VerifyCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VerifyUserCredentialsRequest)
+	in := new(VerifyCredentialsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -351,7 +351,7 @@ func _UserService_VerifyCredentials_Handler(srv interface{}, ctx context.Context
 		FullMethod: UserService_VerifyCredentials_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).VerifyCredentials(ctx, req.(*VerifyUserCredentialsRequest))
+		return srv.(UserServiceServer).VerifyCredentials(ctx, req.(*VerifyCredentialsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
