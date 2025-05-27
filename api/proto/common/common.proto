@@ -6,19 +6,6 @@ option go_package = "github.com/rednek21/SKMEnergoProto/gen/go/proto/common;comm
 
 import "google/protobuf/timestamp.proto";
 
-//message User {
-//  int32 id = 1;
-//  string username = 2;
-//  string email = 3;
-//  string first_name = 4;
-//  string last_name = 5;
-//  bool confirmed = 6;
-//  repeated Role roles = 7;
-//  repeated Permission permissions = 8;
-//  google.protobuf.Timestamp created_at = 9;
-//  google.protobuf.Timestamp updated_at = 10;
-//}
-
 message User {
   int32 id = 1;
   string username = 2;
@@ -26,20 +13,44 @@ message User {
   string first_name = 4;
   string last_name = 5;
   bool confirmed = 6;
-  repeated string roles = 7;
-  repeated string permissions = 8;
-  google.protobuf.Timestamp created_at = 9;
-  google.protobuf.Timestamp updated_at = 10;
+  bool deleted = 7;
+  bool blocked = 8;
+  repeated string roles = 9;
+  repeated string permissions = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
 }
 
 message Role {
   int32 id = 1;
   string name = 2;
   string description = 3;
+  bool deleted = 4;
 }
 
 message Permission {
   int32 id = 1;
   string name = 2;
   string description = 3;
+  bool deleted = 4;
 }
+
+message BlockRequest{
+  repeated int32 ids = 1;
+}
+message BlockResponse{}
+
+message UnblockRequest{
+  repeated int32 ids = 1;
+}
+message UnblockResponse{}
+
+message DeleteRequest{
+  repeated int32 ids = 1;
+}
+message DeleteResponse{}
+
+message RestoreRequest{
+  repeated int32 ids = 1;
+}
+message RestoreResponse{}

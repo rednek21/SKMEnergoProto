@@ -10,6 +10,11 @@ service RoleService {
   rpc Create (CreateRequest) returns (CreateResponse);
   rpc GetAll (GetAllRequest) returns (GetAllResponse);
   rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc Block (common.BlockRequest) returns (common.BlockResponse);
+  rpc Unblock (common.UnblockRequest) returns (common.UnblockResponse);
+  rpc Delete (common.DeleteRequest) returns (common.DeleteResponse);
+  rpc DeleteSoft (common.DeleteRequest) returns (common.DeleteResponse);
+  rpc Restore(common.RestoreRequest) returns (common.RestoreResponse);
 }
 
 message GetAllRequest {}

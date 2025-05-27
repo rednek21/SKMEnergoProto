@@ -17,6 +17,11 @@ service UserService {
   rpc ConfirmEmail(ConfirmEmailRequest) returns (ConfirmEmailResponse);
   rpc CheckUsernameExistence (CheckUsernameExistenceRequest) returns (CheckUsernameExistenceResponse);
   rpc CheckEmailExistence (CheckEmailExistenceRequest) returns (CheckEmailExistenceResponse);
+  rpc Block (common.BlockRequest) returns (common.BlockResponse);
+  rpc Unblock (common.UnblockRequest) returns (common.UnblockResponse);
+  rpc Delete (common.DeleteRequest) returns (common.DeleteResponse);
+  rpc DeleteSoft (common.DeleteRequest) returns (common.DeleteResponse);
+  rpc Restore(common.RestoreRequest) returns (common.RestoreResponse);
 }
 
 message CreateRequest {
@@ -95,3 +100,4 @@ message ConfirmEmailRequest {
   string username = 1;
 }
 message ConfirmEmailResponse {}
+
