@@ -110,15 +110,9 @@ const file_permission_permission_proto_rawDesc = "" +
 	"permission\x1a\x13common/common.proto\"\x0f\n" +
 	"\rGetAllRequest\"F\n" +
 	"\x0eGetAllResponse\x124\n" +
-	"\vpermissions\x18\x01 \x03(\v2\x12.common.PermissionR\vpermissions2\xf8\x02\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x12.common.PermissionR\vpermissions2T\n" +
 	"\x11PermissionService\x12?\n" +
-	"\x06GetAll\x12\x19.permission.GetAllRequest\x1a\x1a.permission.GetAllResponse\x124\n" +
-	"\x05Block\x12\x14.common.BlockRequest\x1a\x15.common.BlockResponse\x12:\n" +
-	"\aUnblock\x12\x16.common.UnblockRequest\x1a\x17.common.UnblockResponse\x127\n" +
-	"\x06Delete\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12;\n" +
-	"\n" +
-	"DeleteSoft\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12:\n" +
-	"\aRestore\x12\x16.common.RestoreRequest\x1a\x17.common.RestoreResponseBGZEgithub.com/rednek21/SKMEnergoProto/gen/go/proto/permission;permissionb\x06proto3"
+	"\x06GetAll\x12\x19.permission.GetAllRequest\x1a\x1a.permission.GetAllResponseBGZEgithub.com/rednek21/SKMEnergoProto/gen/go/proto/permission;permissionb\x06proto3"
 
 var (
 	file_permission_permission_proto_rawDescOnce sync.Once
@@ -134,37 +128,19 @@ func file_permission_permission_proto_rawDescGZIP() []byte {
 
 var file_permission_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_permission_permission_proto_goTypes = []any{
-	(*GetAllRequest)(nil),          // 0: permission.GetAllRequest
-	(*GetAllResponse)(nil),         // 1: permission.GetAllResponse
-	(*common.Permission)(nil),      // 2: common.Permission
-	(*common.BlockRequest)(nil),    // 3: common.BlockRequest
-	(*common.UnblockRequest)(nil),  // 4: common.UnblockRequest
-	(*common.DeleteRequest)(nil),   // 5: common.DeleteRequest
-	(*common.RestoreRequest)(nil),  // 6: common.RestoreRequest
-	(*common.BlockResponse)(nil),   // 7: common.BlockResponse
-	(*common.UnblockResponse)(nil), // 8: common.UnblockResponse
-	(*common.DeleteResponse)(nil),  // 9: common.DeleteResponse
-	(*common.RestoreResponse)(nil), // 10: common.RestoreResponse
+	(*GetAllRequest)(nil),     // 0: permission.GetAllRequest
+	(*GetAllResponse)(nil),    // 1: permission.GetAllResponse
+	(*common.Permission)(nil), // 2: common.Permission
 }
 var file_permission_permission_proto_depIdxs = []int32{
-	2,  // 0: permission.GetAllResponse.permissions:type_name -> common.Permission
-	0,  // 1: permission.PermissionService.GetAll:input_type -> permission.GetAllRequest
-	3,  // 2: permission.PermissionService.Block:input_type -> common.BlockRequest
-	4,  // 3: permission.PermissionService.Unblock:input_type -> common.UnblockRequest
-	5,  // 4: permission.PermissionService.Delete:input_type -> common.DeleteRequest
-	5,  // 5: permission.PermissionService.DeleteSoft:input_type -> common.DeleteRequest
-	6,  // 6: permission.PermissionService.Restore:input_type -> common.RestoreRequest
-	1,  // 7: permission.PermissionService.GetAll:output_type -> permission.GetAllResponse
-	7,  // 8: permission.PermissionService.Block:output_type -> common.BlockResponse
-	8,  // 9: permission.PermissionService.Unblock:output_type -> common.UnblockResponse
-	9,  // 10: permission.PermissionService.Delete:output_type -> common.DeleteResponse
-	9,  // 11: permission.PermissionService.DeleteSoft:output_type -> common.DeleteResponse
-	10, // 12: permission.PermissionService.Restore:output_type -> common.RestoreResponse
-	7,  // [7:13] is the sub-list for method output_type
-	1,  // [1:7] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	2, // 0: permission.GetAllResponse.permissions:type_name -> common.Permission
+	0, // 1: permission.PermissionService.GetAll:input_type -> permission.GetAllRequest
+	1, // 2: permission.PermissionService.GetAll:output_type -> permission.GetAllResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_permission_permission_proto_init() }
