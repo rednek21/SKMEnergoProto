@@ -1036,6 +1036,7 @@ func (x *GetPermissionsRequest) GetUsername() string {
 
 type GetPermissionsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Permissions   []string               `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1068,6 +1069,13 @@ func (x *GetPermissionsResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*GetPermissionsResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetPermissionsResponse) GetPermissions() []string {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
 }
 
 var File_user_user_proto protoreflect.FileDescriptor
@@ -1132,8 +1140,9 @@ const file_user_user_proto_rawDesc = "" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
 	"\x14ConfirmEmailResponse\"3\n" +
 	"\x15GetPermissionsRequest\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\"\x18\n" +
-	"\x16GetPermissionsResponse2\xe2\b\n" +
+	"\busername\x18\x01 \x01(\tR\busername\":\n" +
+	"\x16GetPermissionsResponse\x12 \n" +
+	"\vpermissions\x18\x01 \x03(\tR\vpermissions2\xe2\b\n" +
 	"\vUserService\x123\n" +
 	"\x06Create\x12\x13.user.CreateRequest\x1a\x14.user.CreateResponse\x123\n" +
 	"\x06GetAll\x12\x13.user.GetAllRequest\x1a\x14.user.GetAllResponse\x126\n" +
