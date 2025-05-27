@@ -22,6 +22,7 @@ service UserService {
   rpc Delete (common.DeleteRequest) returns (common.DeleteResponse);
   rpc DeleteSoft (common.DeleteRequest) returns (common.DeleteResponse);
   rpc Restore(common.RestoreRequest) returns (common.RestoreResponse);
+  rpc GetPermissions (GetPermissionsRequest) returns (GetPermissionsResponse);
 }
 
 message CreateRequest {
@@ -101,3 +102,9 @@ message ConfirmEmailRequest {
 }
 message ConfirmEmailResponse {}
 
+message GetPermissionsRequest{
+  string username = 1;
+}
+message GetPermissionsResponse {
+  repeated string permissions = 1;
+}

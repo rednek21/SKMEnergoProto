@@ -35,6 +35,7 @@ const (
 	UserService_Delete_FullMethodName                 = "/user.UserService/Delete"
 	UserService_DeleteSoft_FullMethodName             = "/user.UserService/DeleteSoft"
 	UserService_Restore_FullMethodName                = "/user.UserService/Restore"
+	UserService_GetPermissions_FullMethodName         = "/user.UserService/GetPermissions"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -56,6 +57,7 @@ type UserServiceClient interface {
 	Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
 	DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
 	Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error)
+	GetPermissions(ctx context.Context, in *GetPermissionsRequest, opts ...grpc.CallOption) (*GetPermissionsResponse, error)
 }
 
 type userServiceClient struct {
@@ -216,6 +218,16 @@ func (c *userServiceClient) Restore(ctx context.Context, in *common.RestoreReque
 	return out, nil
 }
 
+func (c *userServiceClient) GetPermissions(ctx context.Context, in *GetPermissionsRequest, opts ...grpc.CallOption) (*GetPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPermissionsResponse)
+	err := c.cc.Invoke(ctx, UserService_GetPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -235,6 +247,7 @@ type UserServiceServer interface {
 	Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
 	DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
 	Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error)
+	GetPermissions(context.Context, *GetPermissionsRequest) (*GetPermissionsResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -289,6 +302,9 @@ func (UnimplementedUserServiceServer) DeleteSoft(context.Context, *common.Delete
 }
 func (UnimplementedUserServiceServer) Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Restore not implemented")
+}
+func (UnimplementedUserServiceServer) GetPermissions(context.Context, *GetPermissionsRequest) (*GetPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPermissions not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -581,6 +597,24 @@ func _UserService_Restore_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetPermissions(ctx, req.(*GetPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -647,6 +681,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Restore",
 			Handler:    _UserService_Restore_Handler,
+		},
+		{
+			MethodName: "GetPermissions",
+			Handler:    _UserService_GetPermissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -990,6 +990,86 @@ func (*ConfirmEmailResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{19}
 }
 
+type GetPermissionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPermissionsRequest) Reset() {
+	*x = GetPermissionsRequest{}
+	mi := &file_user_user_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPermissionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPermissionsRequest) ProtoMessage() {}
+
+func (x *GetPermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPermissionsRequest.ProtoReflect.Descriptor instead.
+func (*GetPermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_user_user_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetPermissionsRequest) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+type GetPermissionsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPermissionsResponse) Reset() {
+	*x = GetPermissionsResponse{}
+	mi := &file_user_user_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPermissionsResponse) ProtoMessage() {}
+
+func (x *GetPermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPermissionsResponse.ProtoReflect.Descriptor instead.
+func (*GetPermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_user_user_proto_rawDescGZIP(), []int{21}
+}
+
 var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
@@ -1050,7 +1130,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
 	"\x13ConfirmEmailRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
-	"\x14ConfirmEmailResponse2\x95\b\n" +
+	"\x14ConfirmEmailResponse\"3\n" +
+	"\x15GetPermissionsRequest\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\"\x18\n" +
+	"\x16GetPermissionsResponse2\xe2\b\n" +
 	"\vUserService\x123\n" +
 	"\x06Create\x12\x13.user.CreateRequest\x1a\x14.user.CreateResponse\x123\n" +
 	"\x06GetAll\x12\x13.user.GetAllRequest\x1a\x14.user.GetAllResponse\x126\n" +
@@ -1067,7 +1150,8 @@ const file_user_user_proto_rawDesc = "" +
 	"\x06Delete\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12;\n" +
 	"\n" +
 	"DeleteSoft\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12:\n" +
-	"\aRestore\x12\x16.common.RestoreRequest\x1a\x17.common.RestoreResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
+	"\aRestore\x12\x16.common.RestoreRequest\x1a\x17.common.RestoreResponse\x12K\n" +
+	"\x0eGetPermissions\x12\x1b.user.GetPermissionsRequest\x1a\x1c.user.GetPermissionsResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -1081,7 +1165,7 @@ func file_user_user_proto_rawDescGZIP() []byte {
 	return file_user_user_proto_rawDescData
 }
 
-var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_user_user_proto_goTypes = []any{
 	(*CreateRequest)(nil),                  // 0: user.CreateRequest
 	(*CreateResponse)(nil),                 // 1: user.CreateResponse
@@ -1103,21 +1187,23 @@ var file_user_user_proto_goTypes = []any{
 	(*VerifyCredentialsResponse)(nil),      // 17: user.VerifyCredentialsResponse
 	(*ConfirmEmailRequest)(nil),            // 18: user.ConfirmEmailRequest
 	(*ConfirmEmailResponse)(nil),           // 19: user.ConfirmEmailResponse
-	(*common.User)(nil),                    // 20: common.User
-	(*common.BlockRequest)(nil),            // 21: common.BlockRequest
-	(*common.UnblockRequest)(nil),          // 22: common.UnblockRequest
-	(*common.DeleteRequest)(nil),           // 23: common.DeleteRequest
-	(*common.RestoreRequest)(nil),          // 24: common.RestoreRequest
-	(*common.BlockResponse)(nil),           // 25: common.BlockResponse
-	(*common.UnblockResponse)(nil),         // 26: common.UnblockResponse
-	(*common.DeleteResponse)(nil),          // 27: common.DeleteResponse
-	(*common.RestoreResponse)(nil),         // 28: common.RestoreResponse
+	(*GetPermissionsRequest)(nil),          // 20: user.GetPermissionsRequest
+	(*GetPermissionsResponse)(nil),         // 21: user.GetPermissionsResponse
+	(*common.User)(nil),                    // 22: common.User
+	(*common.BlockRequest)(nil),            // 23: common.BlockRequest
+	(*common.UnblockRequest)(nil),          // 24: common.UnblockRequest
+	(*common.DeleteRequest)(nil),           // 25: common.DeleteRequest
+	(*common.RestoreRequest)(nil),          // 26: common.RestoreRequest
+	(*common.BlockResponse)(nil),           // 27: common.BlockResponse
+	(*common.UnblockResponse)(nil),         // 28: common.UnblockResponse
+	(*common.DeleteResponse)(nil),          // 29: common.DeleteResponse
+	(*common.RestoreResponse)(nil),         // 30: common.RestoreResponse
 }
 var file_user_user_proto_depIdxs = []int32{
-	20, // 0: user.GetAllResponse.users:type_name -> common.User
-	20, // 1: user.GetByIDResponse.user:type_name -> common.User
-	20, // 2: user.GetByUsernameResponse.user:type_name -> common.User
-	20, // 3: user.UpdateResponse.user:type_name -> common.User
+	22, // 0: user.GetAllResponse.users:type_name -> common.User
+	22, // 1: user.GetByIDResponse.user:type_name -> common.User
+	22, // 2: user.GetByUsernameResponse.user:type_name -> common.User
+	22, // 3: user.UpdateResponse.user:type_name -> common.User
 	0,  // 4: user.UserService.Create:input_type -> user.CreateRequest
 	2,  // 5: user.UserService.GetAll:input_type -> user.GetAllRequest
 	4,  // 6: user.UserService.GetByID:input_type -> user.GetByIDRequest
@@ -1128,28 +1214,30 @@ var file_user_user_proto_depIdxs = []int32{
 	18, // 11: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
 	8,  // 12: user.UserService.CheckUsernameExistence:input_type -> user.CheckUsernameExistenceRequest
 	10, // 13: user.UserService.CheckEmailExistence:input_type -> user.CheckEmailExistenceRequest
-	21, // 14: user.UserService.Block:input_type -> common.BlockRequest
-	22, // 15: user.UserService.Unblock:input_type -> common.UnblockRequest
-	23, // 16: user.UserService.Delete:input_type -> common.DeleteRequest
-	23, // 17: user.UserService.DeleteSoft:input_type -> common.DeleteRequest
-	24, // 18: user.UserService.Restore:input_type -> common.RestoreRequest
-	1,  // 19: user.UserService.Create:output_type -> user.CreateResponse
-	3,  // 20: user.UserService.GetAll:output_type -> user.GetAllResponse
-	5,  // 21: user.UserService.GetByID:output_type -> user.GetByIDResponse
-	7,  // 22: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
-	13, // 23: user.UserService.Update:output_type -> user.UpdateResponse
-	15, // 24: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
-	17, // 25: user.UserService.VerifyCredentials:output_type -> user.VerifyCredentialsResponse
-	19, // 26: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
-	9,  // 27: user.UserService.CheckUsernameExistence:output_type -> user.CheckUsernameExistenceResponse
-	11, // 28: user.UserService.CheckEmailExistence:output_type -> user.CheckEmailExistenceResponse
-	25, // 29: user.UserService.Block:output_type -> common.BlockResponse
-	26, // 30: user.UserService.Unblock:output_type -> common.UnblockResponse
-	27, // 31: user.UserService.Delete:output_type -> common.DeleteResponse
-	27, // 32: user.UserService.DeleteSoft:output_type -> common.DeleteResponse
-	28, // 33: user.UserService.Restore:output_type -> common.RestoreResponse
-	19, // [19:34] is the sub-list for method output_type
-	4,  // [4:19] is the sub-list for method input_type
+	23, // 14: user.UserService.Block:input_type -> common.BlockRequest
+	24, // 15: user.UserService.Unblock:input_type -> common.UnblockRequest
+	25, // 16: user.UserService.Delete:input_type -> common.DeleteRequest
+	25, // 17: user.UserService.DeleteSoft:input_type -> common.DeleteRequest
+	26, // 18: user.UserService.Restore:input_type -> common.RestoreRequest
+	20, // 19: user.UserService.GetPermissions:input_type -> user.GetPermissionsRequest
+	1,  // 20: user.UserService.Create:output_type -> user.CreateResponse
+	3,  // 21: user.UserService.GetAll:output_type -> user.GetAllResponse
+	5,  // 22: user.UserService.GetByID:output_type -> user.GetByIDResponse
+	7,  // 23: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
+	13, // 24: user.UserService.Update:output_type -> user.UpdateResponse
+	15, // 25: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
+	17, // 26: user.UserService.VerifyCredentials:output_type -> user.VerifyCredentialsResponse
+	19, // 27: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
+	9,  // 28: user.UserService.CheckUsernameExistence:output_type -> user.CheckUsernameExistenceResponse
+	11, // 29: user.UserService.CheckEmailExistence:output_type -> user.CheckEmailExistenceResponse
+	27, // 30: user.UserService.Block:output_type -> common.BlockResponse
+	28, // 31: user.UserService.Unblock:output_type -> common.UnblockResponse
+	29, // 32: user.UserService.Delete:output_type -> common.DeleteResponse
+	29, // 33: user.UserService.DeleteSoft:output_type -> common.DeleteResponse
+	30, // 34: user.UserService.Restore:output_type -> common.RestoreResponse
+	21, // 35: user.UserService.GetPermissions:output_type -> user.GetPermissionsResponse
+	20, // [20:36] is the sub-list for method output_type
+	4,  // [4:20] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name
@@ -1167,7 +1255,7 @@ func file_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_user_proto_rawDesc), len(file_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
