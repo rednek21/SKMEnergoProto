@@ -331,13 +331,11 @@ const file_role_role_proto_rawDesc = "" +
 	"\x05_nameB\x0e\n" +
 	"\f_description\"2\n" +
 	"\x0eUpdateResponse\x12 \n" +
-	"\x04role\x18\x01 \x01(\v2\f.common.RoleR\x04role2\xd0\x03\n" +
+	"\x04role\x18\x01 \x01(\v2\f.common.RoleR\x04role2\xde\x02\n" +
 	"\vRoleService\x123\n" +
 	"\x06Create\x12\x13.role.CreateRequest\x1a\x14.role.CreateResponse\x123\n" +
 	"\x06GetAll\x12\x13.role.GetAllRequest\x1a\x14.role.GetAllResponse\x123\n" +
-	"\x06Update\x12\x13.role.UpdateRequest\x1a\x14.role.UpdateResponse\x124\n" +
-	"\x05Block\x12\x14.common.BlockRequest\x1a\x15.common.BlockResponse\x12:\n" +
-	"\aUnblock\x12\x16.common.UnblockRequest\x1a\x17.common.UnblockResponse\x127\n" +
+	"\x06Update\x12\x13.role.UpdateRequest\x1a\x14.role.UpdateResponse\x127\n" +
 	"\x06Delete\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12;\n" +
 	"\n" +
 	"DeleteSoft\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12:\n" +
@@ -364,14 +362,10 @@ var file_role_role_proto_goTypes = []any{
 	(*UpdateRequest)(nil),          // 4: role.UpdateRequest
 	(*UpdateResponse)(nil),         // 5: role.UpdateResponse
 	(*common.Role)(nil),            // 6: common.Role
-	(*common.BlockRequest)(nil),    // 7: common.BlockRequest
-	(*common.UnblockRequest)(nil),  // 8: common.UnblockRequest
-	(*common.DeleteRequest)(nil),   // 9: common.DeleteRequest
-	(*common.RestoreRequest)(nil),  // 10: common.RestoreRequest
-	(*common.BlockResponse)(nil),   // 11: common.BlockResponse
-	(*common.UnblockResponse)(nil), // 12: common.UnblockResponse
-	(*common.DeleteResponse)(nil),  // 13: common.DeleteResponse
-	(*common.RestoreResponse)(nil), // 14: common.RestoreResponse
+	(*common.DeleteRequest)(nil),   // 7: common.DeleteRequest
+	(*common.RestoreRequest)(nil),  // 8: common.RestoreRequest
+	(*common.DeleteResponse)(nil),  // 9: common.DeleteResponse
+	(*common.RestoreResponse)(nil), // 10: common.RestoreResponse
 }
 var file_role_role_proto_depIdxs = []int32{
 	6,  // 0: role.GetAllResponse.roles:type_name -> common.Role
@@ -379,21 +373,17 @@ var file_role_role_proto_depIdxs = []int32{
 	2,  // 2: role.RoleService.Create:input_type -> role.CreateRequest
 	0,  // 3: role.RoleService.GetAll:input_type -> role.GetAllRequest
 	4,  // 4: role.RoleService.Update:input_type -> role.UpdateRequest
-	7,  // 5: role.RoleService.Block:input_type -> common.BlockRequest
-	8,  // 6: role.RoleService.Unblock:input_type -> common.UnblockRequest
-	9,  // 7: role.RoleService.Delete:input_type -> common.DeleteRequest
-	9,  // 8: role.RoleService.DeleteSoft:input_type -> common.DeleteRequest
-	10, // 9: role.RoleService.Restore:input_type -> common.RestoreRequest
-	3,  // 10: role.RoleService.Create:output_type -> role.CreateResponse
-	1,  // 11: role.RoleService.GetAll:output_type -> role.GetAllResponse
-	5,  // 12: role.RoleService.Update:output_type -> role.UpdateResponse
-	11, // 13: role.RoleService.Block:output_type -> common.BlockResponse
-	12, // 14: role.RoleService.Unblock:output_type -> common.UnblockResponse
-	13, // 15: role.RoleService.Delete:output_type -> common.DeleteResponse
-	13, // 16: role.RoleService.DeleteSoft:output_type -> common.DeleteResponse
-	14, // 17: role.RoleService.Restore:output_type -> common.RestoreResponse
-	10, // [10:18] is the sub-list for method output_type
-	2,  // [2:10] is the sub-list for method input_type
+	7,  // 5: role.RoleService.Delete:input_type -> common.DeleteRequest
+	7,  // 6: role.RoleService.DeleteSoft:input_type -> common.DeleteRequest
+	8,  // 7: role.RoleService.Restore:input_type -> common.RestoreRequest
+	3,  // 8: role.RoleService.Create:output_type -> role.CreateResponse
+	1,  // 9: role.RoleService.GetAll:output_type -> role.GetAllResponse
+	5,  // 10: role.RoleService.Update:output_type -> role.UpdateResponse
+	9,  // 11: role.RoleService.Delete:output_type -> common.DeleteResponse
+	9,  // 12: role.RoleService.DeleteSoft:output_type -> common.DeleteResponse
+	10, // 13: role.RoleService.Restore:output_type -> common.RestoreResponse
+	8,  // [8:14] is the sub-list for method output_type
+	2,  // [2:8] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name

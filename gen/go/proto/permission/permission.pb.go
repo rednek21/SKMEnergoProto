@@ -110,9 +110,13 @@ const file_permission_permission_proto_rawDesc = "" +
 	"permission\x1a\x13common/common.proto\"\x0f\n" +
 	"\rGetAllRequest\"F\n" +
 	"\x0eGetAllResponse\x124\n" +
-	"\vpermissions\x18\x01 \x03(\v2\x12.common.PermissionR\vpermissions2T\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x12.common.PermissionR\vpermissions2\x86\x02\n" +
 	"\x11PermissionService\x12?\n" +
-	"\x06GetAll\x12\x19.permission.GetAllRequest\x1a\x1a.permission.GetAllResponseBGZEgithub.com/rednek21/SKMEnergoProto/gen/go/proto/permission;permissionb\x06proto3"
+	"\x06GetAll\x12\x19.permission.GetAllRequest\x1a\x1a.permission.GetAllResponse\x127\n" +
+	"\x06Delete\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12;\n" +
+	"\n" +
+	"DeleteSoft\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12:\n" +
+	"\aRestore\x12\x16.common.RestoreRequest\x1a\x17.common.RestoreResponseBGZEgithub.com/rednek21/SKMEnergoProto/gen/go/proto/permission;permissionb\x06proto3"
 
 var (
 	file_permission_permission_proto_rawDescOnce sync.Once
@@ -128,16 +132,26 @@ func file_permission_permission_proto_rawDescGZIP() []byte {
 
 var file_permission_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_permission_permission_proto_goTypes = []any{
-	(*GetAllRequest)(nil),     // 0: permission.GetAllRequest
-	(*GetAllResponse)(nil),    // 1: permission.GetAllResponse
-	(*common.Permission)(nil), // 2: common.Permission
+	(*GetAllRequest)(nil),          // 0: permission.GetAllRequest
+	(*GetAllResponse)(nil),         // 1: permission.GetAllResponse
+	(*common.Permission)(nil),      // 2: common.Permission
+	(*common.DeleteRequest)(nil),   // 3: common.DeleteRequest
+	(*common.RestoreRequest)(nil),  // 4: common.RestoreRequest
+	(*common.DeleteResponse)(nil),  // 5: common.DeleteResponse
+	(*common.RestoreResponse)(nil), // 6: common.RestoreResponse
 }
 var file_permission_permission_proto_depIdxs = []int32{
 	2, // 0: permission.GetAllResponse.permissions:type_name -> common.Permission
 	0, // 1: permission.PermissionService.GetAll:input_type -> permission.GetAllRequest
-	1, // 2: permission.PermissionService.GetAll:output_type -> permission.GetAllResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
+	3, // 2: permission.PermissionService.Delete:input_type -> common.DeleteRequest
+	3, // 3: permission.PermissionService.DeleteSoft:input_type -> common.DeleteRequest
+	4, // 4: permission.PermissionService.Restore:input_type -> common.RestoreRequest
+	1, // 5: permission.PermissionService.GetAll:output_type -> permission.GetAllResponse
+	5, // 6: permission.PermissionService.Delete:output_type -> common.DeleteResponse
+	5, // 7: permission.PermissionService.DeleteSoft:output_type -> common.DeleteResponse
+	6, // 8: permission.PermissionService.Restore:output_type -> common.RestoreResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name

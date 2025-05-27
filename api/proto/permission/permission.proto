@@ -8,6 +8,9 @@ import "common/common.proto";
 
 service PermissionService {
   rpc GetAll (GetAllRequest) returns (GetAllResponse);
+  rpc Delete (common.DeleteRequest) returns (common.DeleteResponse);
+  rpc DeleteSoft (common.DeleteRequest) returns (common.DeleteResponse);
+  rpc Restore(common.RestoreRequest) returns (common.RestoreResponse);
 }
 
 message GetAllRequest {}
