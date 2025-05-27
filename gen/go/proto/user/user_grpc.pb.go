@@ -8,6 +8,7 @@ package user
 
 import (
 	context "context"
+	common "github.com/rednek21/SKMEnergoProto/gen/go/proto/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -29,6 +30,11 @@ const (
 	UserService_ConfirmEmail_FullMethodName           = "/user.UserService/ConfirmEmail"
 	UserService_CheckUsernameExistence_FullMethodName = "/user.UserService/CheckUsernameExistence"
 	UserService_CheckEmailExistence_FullMethodName    = "/user.UserService/CheckEmailExistence"
+	UserService_Block_FullMethodName                  = "/user.UserService/Block"
+	UserService_Unblock_FullMethodName                = "/user.UserService/Unblock"
+	UserService_Delete_FullMethodName                 = "/user.UserService/Delete"
+	UserService_DeleteSoft_FullMethodName             = "/user.UserService/DeleteSoft"
+	UserService_Restore_FullMethodName                = "/user.UserService/Restore"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -45,6 +51,11 @@ type UserServiceClient interface {
 	ConfirmEmail(ctx context.Context, in *ConfirmEmailRequest, opts ...grpc.CallOption) (*ConfirmEmailResponse, error)
 	CheckUsernameExistence(ctx context.Context, in *CheckUsernameExistenceRequest, opts ...grpc.CallOption) (*CheckUsernameExistenceResponse, error)
 	CheckEmailExistence(ctx context.Context, in *CheckEmailExistenceRequest, opts ...grpc.CallOption) (*CheckEmailExistenceResponse, error)
+	Block(ctx context.Context, in *common.BlockRequest, opts ...grpc.CallOption) (*common.BlockResponse, error)
+	Unblock(ctx context.Context, in *common.UnblockRequest, opts ...grpc.CallOption) (*common.UnblockResponse, error)
+	Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
+	DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
+	Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error)
 }
 
 type userServiceClient struct {
@@ -155,6 +166,56 @@ func (c *userServiceClient) CheckEmailExistence(ctx context.Context, in *CheckEm
 	return out, nil
 }
 
+func (c *userServiceClient) Block(ctx context.Context, in *common.BlockRequest, opts ...grpc.CallOption) (*common.BlockResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.BlockResponse)
+	err := c.cc.Invoke(ctx, UserService_Block_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Unblock(ctx context.Context, in *common.UnblockRequest, opts ...grpc.CallOption) (*common.UnblockResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.UnblockResponse)
+	err := c.cc.Invoke(ctx, UserService_Unblock_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.DeleteResponse)
+	err := c.cc.Invoke(ctx, UserService_Delete_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.DeleteResponse)
+	err := c.cc.Invoke(ctx, UserService_DeleteSoft_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.RestoreResponse)
+	err := c.cc.Invoke(ctx, UserService_Restore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -169,6 +230,11 @@ type UserServiceServer interface {
 	ConfirmEmail(context.Context, *ConfirmEmailRequest) (*ConfirmEmailResponse, error)
 	CheckUsernameExistence(context.Context, *CheckUsernameExistenceRequest) (*CheckUsernameExistenceResponse, error)
 	CheckEmailExistence(context.Context, *CheckEmailExistenceRequest) (*CheckEmailExistenceResponse, error)
+	Block(context.Context, *common.BlockRequest) (*common.BlockResponse, error)
+	Unblock(context.Context, *common.UnblockRequest) (*common.UnblockResponse, error)
+	Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
+	DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
+	Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -208,6 +274,21 @@ func (UnimplementedUserServiceServer) CheckUsernameExistence(context.Context, *C
 }
 func (UnimplementedUserServiceServer) CheckEmailExistence(context.Context, *CheckEmailExistenceRequest) (*CheckEmailExistenceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckEmailExistence not implemented")
+}
+func (UnimplementedUserServiceServer) Block(context.Context, *common.BlockRequest) (*common.BlockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Block not implemented")
+}
+func (UnimplementedUserServiceServer) Unblock(context.Context, *common.UnblockRequest) (*common.UnblockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Unblock not implemented")
+}
+func (UnimplementedUserServiceServer) Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+}
+func (UnimplementedUserServiceServer) DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSoft not implemented")
+}
+func (UnimplementedUserServiceServer) Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Restore not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -410,6 +491,96 @@ func _UserService_CheckEmailExistence_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_Block_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.BlockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Block(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Block_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Block(ctx, req.(*common.BlockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Unblock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.UnblockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Unblock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Unblock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Unblock(ctx, req.(*common.UnblockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Delete_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Delete(ctx, req.(*common.DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_DeleteSoft_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).DeleteSoft(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_DeleteSoft_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).DeleteSoft(ctx, req.(*common.DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Restore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.RestoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Restore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Restore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Restore(ctx, req.(*common.RestoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -456,6 +627,26 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckEmailExistence",
 			Handler:    _UserService_CheckEmailExistence_Handler,
+		},
+		{
+			MethodName: "Block",
+			Handler:    _UserService_Block_Handler,
+		},
+		{
+			MethodName: "Unblock",
+			Handler:    _UserService_Unblock_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _UserService_Delete_Handler,
+		},
+		{
+			MethodName: "DeleteSoft",
+			Handler:    _UserService_DeleteSoft_Handler,
+		},
+		{
+			MethodName: "Restore",
+			Handler:    _UserService_Restore_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

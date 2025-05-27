@@ -8,6 +8,7 @@ package permission
 
 import (
 	context "context"
+	common "github.com/rednek21/SKMEnergoProto/gen/go/proto/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,7 +20,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PermissionService_GetAll_FullMethodName = "/permission.PermissionService/GetAll"
+	PermissionService_GetAll_FullMethodName     = "/permission.PermissionService/GetAll"
+	PermissionService_Block_FullMethodName      = "/permission.PermissionService/Block"
+	PermissionService_Unblock_FullMethodName    = "/permission.PermissionService/Unblock"
+	PermissionService_Delete_FullMethodName     = "/permission.PermissionService/Delete"
+	PermissionService_DeleteSoft_FullMethodName = "/permission.PermissionService/DeleteSoft"
+	PermissionService_Restore_FullMethodName    = "/permission.PermissionService/Restore"
 )
 
 // PermissionServiceClient is the client API for PermissionService service.
@@ -27,6 +33,11 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PermissionServiceClient interface {
 	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
+	Block(ctx context.Context, in *common.BlockRequest, opts ...grpc.CallOption) (*common.BlockResponse, error)
+	Unblock(ctx context.Context, in *common.UnblockRequest, opts ...grpc.CallOption) (*common.UnblockResponse, error)
+	Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
+	DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
+	Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error)
 }
 
 type permissionServiceClient struct {
@@ -47,11 +58,66 @@ func (c *permissionServiceClient) GetAll(ctx context.Context, in *GetAllRequest,
 	return out, nil
 }
 
+func (c *permissionServiceClient) Block(ctx context.Context, in *common.BlockRequest, opts ...grpc.CallOption) (*common.BlockResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.BlockResponse)
+	err := c.cc.Invoke(ctx, PermissionService_Block_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) Unblock(ctx context.Context, in *common.UnblockRequest, opts ...grpc.CallOption) (*common.UnblockResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.UnblockResponse)
+	err := c.cc.Invoke(ctx, PermissionService_Unblock_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.DeleteResponse)
+	err := c.cc.Invoke(ctx, PermissionService_Delete_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.DeleteResponse)
+	err := c.cc.Invoke(ctx, PermissionService_DeleteSoft_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *permissionServiceClient) Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.RestoreResponse)
+	err := c.cc.Invoke(ctx, PermissionService_Restore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PermissionServiceServer is the server API for PermissionService service.
 // All implementations must embed UnimplementedPermissionServiceServer
 // for forward compatibility.
 type PermissionServiceServer interface {
 	GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error)
+	Block(context.Context, *common.BlockRequest) (*common.BlockResponse, error)
+	Unblock(context.Context, *common.UnblockRequest) (*common.UnblockResponse, error)
+	Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
+	DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
+	Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error)
 	mustEmbedUnimplementedPermissionServiceServer()
 }
 
@@ -64,6 +130,21 @@ type UnimplementedPermissionServiceServer struct{}
 
 func (UnimplementedPermissionServiceServer) GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedPermissionServiceServer) Block(context.Context, *common.BlockRequest) (*common.BlockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Block not implemented")
+}
+func (UnimplementedPermissionServiceServer) Unblock(context.Context, *common.UnblockRequest) (*common.UnblockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Unblock not implemented")
+}
+func (UnimplementedPermissionServiceServer) Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+}
+func (UnimplementedPermissionServiceServer) DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSoft not implemented")
+}
+func (UnimplementedPermissionServiceServer) Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Restore not implemented")
 }
 func (UnimplementedPermissionServiceServer) mustEmbedUnimplementedPermissionServiceServer() {}
 func (UnimplementedPermissionServiceServer) testEmbeddedByValue()                           {}
@@ -104,6 +185,96 @@ func _PermissionService_GetAll_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PermissionService_Block_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.BlockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).Block(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_Block_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).Block(ctx, req.(*common.BlockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_Unblock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.UnblockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).Unblock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_Unblock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).Unblock(ctx, req.(*common.UnblockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_Delete_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).Delete(ctx, req.(*common.DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_DeleteSoft_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).DeleteSoft(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_DeleteSoft_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).DeleteSoft(ctx, req.(*common.DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PermissionService_Restore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.RestoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).Restore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_Restore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).Restore(ctx, req.(*common.RestoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PermissionService_ServiceDesc is the grpc.ServiceDesc for PermissionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +285,26 @@ var PermissionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAll",
 			Handler:    _PermissionService_GetAll_Handler,
+		},
+		{
+			MethodName: "Block",
+			Handler:    _PermissionService_Block_Handler,
+		},
+		{
+			MethodName: "Unblock",
+			Handler:    _PermissionService_Unblock_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _PermissionService_Delete_Handler,
+		},
+		{
+			MethodName: "DeleteSoft",
+			Handler:    _PermissionService_DeleteSoft_Handler,
+		},
+		{
+			MethodName: "Restore",
+			Handler:    _PermissionService_Restore_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

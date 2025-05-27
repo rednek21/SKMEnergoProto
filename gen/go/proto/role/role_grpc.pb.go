@@ -8,6 +8,7 @@ package role
 
 import (
 	context "context"
+	common "github.com/rednek21/SKMEnergoProto/gen/go/proto/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,9 +20,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RoleService_Create_FullMethodName = "/role.RoleService/Create"
-	RoleService_GetAll_FullMethodName = "/role.RoleService/GetAll"
-	RoleService_Update_FullMethodName = "/role.RoleService/Update"
+	RoleService_Create_FullMethodName     = "/role.RoleService/Create"
+	RoleService_GetAll_FullMethodName     = "/role.RoleService/GetAll"
+	RoleService_Update_FullMethodName     = "/role.RoleService/Update"
+	RoleService_Block_FullMethodName      = "/role.RoleService/Block"
+	RoleService_Unblock_FullMethodName    = "/role.RoleService/Unblock"
+	RoleService_Delete_FullMethodName     = "/role.RoleService/Delete"
+	RoleService_DeleteSoft_FullMethodName = "/role.RoleService/DeleteSoft"
+	RoleService_Restore_FullMethodName    = "/role.RoleService/Restore"
 )
 
 // RoleServiceClient is the client API for RoleService service.
@@ -31,6 +37,11 @@ type RoleServiceClient interface {
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	Block(ctx context.Context, in *common.BlockRequest, opts ...grpc.CallOption) (*common.BlockResponse, error)
+	Unblock(ctx context.Context, in *common.UnblockRequest, opts ...grpc.CallOption) (*common.UnblockResponse, error)
+	Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
+	DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error)
+	Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error)
 }
 
 type roleServiceClient struct {
@@ -71,6 +82,56 @@ func (c *roleServiceClient) Update(ctx context.Context, in *UpdateRequest, opts 
 	return out, nil
 }
 
+func (c *roleServiceClient) Block(ctx context.Context, in *common.BlockRequest, opts ...grpc.CallOption) (*common.BlockResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.BlockResponse)
+	err := c.cc.Invoke(ctx, RoleService_Block_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *roleServiceClient) Unblock(ctx context.Context, in *common.UnblockRequest, opts ...grpc.CallOption) (*common.UnblockResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.UnblockResponse)
+	err := c.cc.Invoke(ctx, RoleService_Unblock_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *roleServiceClient) Delete(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.DeleteResponse)
+	err := c.cc.Invoke(ctx, RoleService_Delete_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *roleServiceClient) DeleteSoft(ctx context.Context, in *common.DeleteRequest, opts ...grpc.CallOption) (*common.DeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.DeleteResponse)
+	err := c.cc.Invoke(ctx, RoleService_DeleteSoft_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *roleServiceClient) Restore(ctx context.Context, in *common.RestoreRequest, opts ...grpc.CallOption) (*common.RestoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(common.RestoreResponse)
+	err := c.cc.Invoke(ctx, RoleService_Restore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RoleServiceServer is the server API for RoleService service.
 // All implementations must embed UnimplementedRoleServiceServer
 // for forward compatibility.
@@ -78,6 +139,11 @@ type RoleServiceServer interface {
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error)
 	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	Block(context.Context, *common.BlockRequest) (*common.BlockResponse, error)
+	Unblock(context.Context, *common.UnblockRequest) (*common.UnblockResponse, error)
+	Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
+	DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error)
+	Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error)
 	mustEmbedUnimplementedRoleServiceServer()
 }
 
@@ -96,6 +162,21 @@ func (UnimplementedRoleServiceServer) GetAll(context.Context, *GetAllRequest) (*
 }
 func (UnimplementedRoleServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedRoleServiceServer) Block(context.Context, *common.BlockRequest) (*common.BlockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Block not implemented")
+}
+func (UnimplementedRoleServiceServer) Unblock(context.Context, *common.UnblockRequest) (*common.UnblockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Unblock not implemented")
+}
+func (UnimplementedRoleServiceServer) Delete(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+}
+func (UnimplementedRoleServiceServer) DeleteSoft(context.Context, *common.DeleteRequest) (*common.DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSoft not implemented")
+}
+func (UnimplementedRoleServiceServer) Restore(context.Context, *common.RestoreRequest) (*common.RestoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Restore not implemented")
 }
 func (UnimplementedRoleServiceServer) mustEmbedUnimplementedRoleServiceServer() {}
 func (UnimplementedRoleServiceServer) testEmbeddedByValue()                     {}
@@ -172,6 +253,96 @@ func _RoleService_Update_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RoleService_Block_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.BlockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).Block(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_Block_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).Block(ctx, req.(*common.BlockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RoleService_Unblock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.UnblockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).Unblock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_Unblock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).Unblock(ctx, req.(*common.UnblockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RoleService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_Delete_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).Delete(ctx, req.(*common.DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RoleService_DeleteSoft_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).DeleteSoft(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_DeleteSoft_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).DeleteSoft(ctx, req.(*common.DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RoleService_Restore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(common.RestoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).Restore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_Restore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).Restore(ctx, req.(*common.RestoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RoleService_ServiceDesc is the grpc.ServiceDesc for RoleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +361,26 @@ var RoleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Update",
 			Handler:    _RoleService_Update_Handler,
+		},
+		{
+			MethodName: "Block",
+			Handler:    _RoleService_Block_Handler,
+		},
+		{
+			MethodName: "Unblock",
+			Handler:    _RoleService_Unblock_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _RoleService_Delete_Handler,
+		},
+		{
+			MethodName: "DeleteSoft",
+			Handler:    _RoleService_DeleteSoft_Handler,
+		},
+		{
+			MethodName: "Restore",
+			Handler:    _RoleService_Restore_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

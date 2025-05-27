@@ -1050,7 +1050,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
 	"\x13ConfirmEmailRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
-	"\x14ConfirmEmailResponse2\xf1\x05\n" +
+	"\x14ConfirmEmailResponse2\x95\b\n" +
 	"\vUserService\x123\n" +
 	"\x06Create\x12\x13.user.CreateRequest\x1a\x14.user.CreateResponse\x123\n" +
 	"\x06GetAll\x12\x13.user.GetAllRequest\x1a\x14.user.GetAllResponse\x126\n" +
@@ -1061,7 +1061,13 @@ const file_user_user_proto_rawDesc = "" +
 	"\x11VerifyCredentials\x12\x1e.user.VerifyCredentialsRequest\x1a\x1f.user.VerifyCredentialsResponse\x12E\n" +
 	"\fConfirmEmail\x12\x19.user.ConfirmEmailRequest\x1a\x1a.user.ConfirmEmailResponse\x12c\n" +
 	"\x16CheckUsernameExistence\x12#.user.CheckUsernameExistenceRequest\x1a$.user.CheckUsernameExistenceResponse\x12Z\n" +
-	"\x13CheckEmailExistence\x12 .user.CheckEmailExistenceRequest\x1a!.user.CheckEmailExistenceResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
+	"\x13CheckEmailExistence\x12 .user.CheckEmailExistenceRequest\x1a!.user.CheckEmailExistenceResponse\x124\n" +
+	"\x05Block\x12\x14.common.BlockRequest\x1a\x15.common.BlockResponse\x12:\n" +
+	"\aUnblock\x12\x16.common.UnblockRequest\x1a\x17.common.UnblockResponse\x127\n" +
+	"\x06Delete\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12;\n" +
+	"\n" +
+	"DeleteSoft\x12\x15.common.DeleteRequest\x1a\x16.common.DeleteResponse\x12:\n" +
+	"\aRestore\x12\x16.common.RestoreRequest\x1a\x17.common.RestoreResponseB;Z9github.com/rednek21/SKMEnergoProto/gen/go/proto/user;userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -1098,6 +1104,14 @@ var file_user_user_proto_goTypes = []any{
 	(*ConfirmEmailRequest)(nil),            // 18: user.ConfirmEmailRequest
 	(*ConfirmEmailResponse)(nil),           // 19: user.ConfirmEmailResponse
 	(*common.User)(nil),                    // 20: common.User
+	(*common.BlockRequest)(nil),            // 21: common.BlockRequest
+	(*common.UnblockRequest)(nil),          // 22: common.UnblockRequest
+	(*common.DeleteRequest)(nil),           // 23: common.DeleteRequest
+	(*common.RestoreRequest)(nil),          // 24: common.RestoreRequest
+	(*common.BlockResponse)(nil),           // 25: common.BlockResponse
+	(*common.UnblockResponse)(nil),         // 26: common.UnblockResponse
+	(*common.DeleteResponse)(nil),          // 27: common.DeleteResponse
+	(*common.RestoreResponse)(nil),         // 28: common.RestoreResponse
 }
 var file_user_user_proto_depIdxs = []int32{
 	20, // 0: user.GetAllResponse.users:type_name -> common.User
@@ -1114,18 +1128,28 @@ var file_user_user_proto_depIdxs = []int32{
 	18, // 11: user.UserService.ConfirmEmail:input_type -> user.ConfirmEmailRequest
 	8,  // 12: user.UserService.CheckUsernameExistence:input_type -> user.CheckUsernameExistenceRequest
 	10, // 13: user.UserService.CheckEmailExistence:input_type -> user.CheckEmailExistenceRequest
-	1,  // 14: user.UserService.Create:output_type -> user.CreateResponse
-	3,  // 15: user.UserService.GetAll:output_type -> user.GetAllResponse
-	5,  // 16: user.UserService.GetByID:output_type -> user.GetByIDResponse
-	7,  // 17: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
-	13, // 18: user.UserService.Update:output_type -> user.UpdateResponse
-	15, // 19: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
-	17, // 20: user.UserService.VerifyCredentials:output_type -> user.VerifyCredentialsResponse
-	19, // 21: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
-	9,  // 22: user.UserService.CheckUsernameExistence:output_type -> user.CheckUsernameExistenceResponse
-	11, // 23: user.UserService.CheckEmailExistence:output_type -> user.CheckEmailExistenceResponse
-	14, // [14:24] is the sub-list for method output_type
-	4,  // [4:14] is the sub-list for method input_type
+	21, // 14: user.UserService.Block:input_type -> common.BlockRequest
+	22, // 15: user.UserService.Unblock:input_type -> common.UnblockRequest
+	23, // 16: user.UserService.Delete:input_type -> common.DeleteRequest
+	23, // 17: user.UserService.DeleteSoft:input_type -> common.DeleteRequest
+	24, // 18: user.UserService.Restore:input_type -> common.RestoreRequest
+	1,  // 19: user.UserService.Create:output_type -> user.CreateResponse
+	3,  // 20: user.UserService.GetAll:output_type -> user.GetAllResponse
+	5,  // 21: user.UserService.GetByID:output_type -> user.GetByIDResponse
+	7,  // 22: user.UserService.GetByUsername:output_type -> user.GetByUsernameResponse
+	13, // 23: user.UserService.Update:output_type -> user.UpdateResponse
+	15, // 24: user.UserService.ResetPasswordConfirmed:output_type -> user.ResetPasswordConfirmedResponse
+	17, // 25: user.UserService.VerifyCredentials:output_type -> user.VerifyCredentialsResponse
+	19, // 26: user.UserService.ConfirmEmail:output_type -> user.ConfirmEmailResponse
+	9,  // 27: user.UserService.CheckUsernameExistence:output_type -> user.CheckUsernameExistenceResponse
+	11, // 28: user.UserService.CheckEmailExistence:output_type -> user.CheckEmailExistenceResponse
+	25, // 29: user.UserService.Block:output_type -> common.BlockResponse
+	26, // 30: user.UserService.Unblock:output_type -> common.UnblockResponse
+	27, // 31: user.UserService.Delete:output_type -> common.DeleteResponse
+	27, // 32: user.UserService.DeleteSoft:output_type -> common.DeleteResponse
+	28, // 33: user.UserService.Restore:output_type -> common.RestoreResponse
+	19, // [19:34] is the sub-list for method output_type
+	4,  // [4:19] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name
