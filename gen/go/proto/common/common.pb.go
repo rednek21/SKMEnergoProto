@@ -176,6 +176,7 @@ type Role struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Deleted       bool                   `protobuf:"varint,4,opt,name=deleted,proto3" json:"deleted,omitempty"`
+	DeletedAt     *timestamp.Timestamp   `protobuf:"bytes,5,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -238,12 +239,20 @@ func (x *Role) GetDeleted() bool {
 	return false
 }
 
+func (x *Role) GetDeletedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 type Permission struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Deleted       bool                   `protobuf:"varint,4,opt,name=deleted,proto3" json:"deleted,omitempty"`
+	DeletedAt     *timestamp.Timestamp   `protobuf:"bytes,5,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -304,6 +313,13 @@ func (x *Permission) GetDeleted() bool {
 		return x.Deleted
 	}
 	return false
+}
+
+func (x *Permission) GetDeletedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
 }
 
 type BlockRequest struct {
@@ -651,18 +667,22 @@ const file_common_common_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"f\n" +
+	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xa1\x01\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x18\n" +
-	"\adeleted\x18\x04 \x01(\bR\adeleted\"l\n" +
+	"\adeleted\x18\x04 \x01(\bR\adeleted\x129\n" +
+	"\n" +
+	"deleted_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xa7\x01\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x18\n" +
-	"\adeleted\x18\x04 \x01(\bR\adeleted\" \n" +
+	"\adeleted\x18\x04 \x01(\bR\adeleted\x129\n" +
+	"\n" +
+	"deleted_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\" \n" +
 	"\fBlockRequest\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\x05R\x03ids\"\x0f\n" +
 	"\rBlockResponse\"\"\n" +
@@ -708,11 +728,13 @@ var file_common_common_proto_depIdxs = []int32{
 	11, // 1: common.User.blocked_at:type_name -> google.protobuf.Timestamp
 	11, // 2: common.User.created_at:type_name -> google.protobuf.Timestamp
 	11, // 3: common.User.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	11, // 4: common.Role.deleted_at:type_name -> google.protobuf.Timestamp
+	11, // 5: common.Permission.deleted_at:type_name -> google.protobuf.Timestamp
+	6,  // [6:6] is the sub-list for method output_type
+	6,  // [6:6] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_common_common_proto_init() }
