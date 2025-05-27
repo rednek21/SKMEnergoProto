@@ -66,12 +66,11 @@ message CheckEmailExistenceRequest {
 message CheckEmailExistenceResponse {}
 
 message UpdateRequest {
-  int32 target_user_id = 1;
-  string requester_username = 2;
-  optional string new_username = 3;
-  optional string new_email = 4;
-  optional string new_first_name = 5;
-  optional string new_last_name = 6;
+  int32 id = 1;
+  optional string new_username = 2;
+  optional string new_email = 3;
+  optional string new_first_name = 4;
+  optional string new_last_name = 5;
 }
 message UpdateResponse {
   common.User user = 1;

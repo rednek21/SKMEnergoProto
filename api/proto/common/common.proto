@@ -14,11 +14,13 @@ message User {
   string last_name = 5;
   bool confirmed = 6;
   bool deleted = 7;
-  bool blocked = 8;
-  repeated string roles = 9;
-  repeated string permissions = 10;
-  google.protobuf.Timestamp created_at = 11;
-  google.protobuf.Timestamp updated_at = 12;
+  google.protobuf.Timestamp deleted_at = 8;
+  bool blocked = 9;
+  google.protobuf.Timestamp blocked_at = 10;
+  repeated string roles = 11;
+  repeated string permissions = 12;
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
 }
 
 message Role {

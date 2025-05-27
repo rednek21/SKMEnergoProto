@@ -31,11 +31,13 @@ type User struct {
 	LastName      string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	Confirmed     bool                   `protobuf:"varint,6,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
 	Deleted       bool                   `protobuf:"varint,7,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	Blocked       bool                   `protobuf:"varint,8,opt,name=blocked,proto3" json:"blocked,omitempty"`
-	Roles         []string               `protobuf:"bytes,9,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []string               `protobuf:"bytes,10,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	CreatedAt     *timestamp.Timestamp   `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamp.Timestamp   `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamp.Timestamp   `protobuf:"bytes,8,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Blocked       bool                   `protobuf:"varint,9,opt,name=blocked,proto3" json:"blocked,omitempty"`
+	BlockedAt     *timestamp.Timestamp   `protobuf:"bytes,10,opt,name=blocked_at,json=blockedAt,proto3" json:"blocked_at,omitempty"`
+	Roles         []string               `protobuf:"bytes,11,rep,name=roles,proto3" json:"roles,omitempty"`
+	Permissions   []string               `protobuf:"bytes,12,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	CreatedAt     *timestamp.Timestamp   `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamp.Timestamp   `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,11 +121,25 @@ func (x *User) GetDeleted() bool {
 	return false
 }
 
+func (x *User) GetDeletedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *User) GetBlocked() bool {
 	if x != nil {
 		return x.Blocked
 	}
 	return false
+}
+
+func (x *User) GetBlockedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.BlockedAt
+	}
+	return nil
 }
 
 func (x *User) GetRoles() []string {
@@ -614,7 +630,7 @@ var File_common_common_proto protoreflect.FileDescriptor
 
 const file_common_common_proto_rawDesc = "" +
 	"\n" +
-	"\x13common/common.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\x84\x03\n" +
+	"\x13common/common.proto\x12\x06common\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
@@ -623,15 +639,19 @@ const file_common_common_proto_rawDesc = "" +
 	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\x1c\n" +
 	"\tconfirmed\x18\x06 \x01(\bR\tconfirmed\x12\x18\n" +
-	"\adeleted\x18\a \x01(\bR\adeleted\x12\x18\n" +
-	"\ablocked\x18\b \x01(\bR\ablocked\x12\x14\n" +
-	"\x05roles\x18\t \x03(\tR\x05roles\x12 \n" +
-	"\vpermissions\x18\n" +
-	" \x03(\tR\vpermissions\x129\n" +
+	"\adeleted\x18\a \x01(\bR\adeleted\x129\n" +
 	"\n" +
-	"created_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"deleted_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x18\n" +
+	"\ablocked\x18\t \x01(\bR\ablocked\x129\n" +
 	"\n" +
-	"updated_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"f\n" +
+	"blocked_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tblockedAt\x12\x14\n" +
+	"\x05roles\x18\v \x03(\tR\x05roles\x12 \n" +
+	"\vpermissions\x18\f \x03(\tR\vpermissions\x129\n" +
+	"\n" +
+	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"f\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -684,13 +704,15 @@ var file_common_common_proto_goTypes = []any{
 	(*timestamp.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_common_common_proto_depIdxs = []int32{
-	11, // 0: common.User.created_at:type_name -> google.protobuf.Timestamp
-	11, // 1: common.User.updated_at:type_name -> google.protobuf.Timestamp
-	2,  // [2:2] is the sub-list for method output_type
-	2,  // [2:2] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	11, // 0: common.User.deleted_at:type_name -> google.protobuf.Timestamp
+	11, // 1: common.User.blocked_at:type_name -> google.protobuf.Timestamp
+	11, // 2: common.User.created_at:type_name -> google.protobuf.Timestamp
+	11, // 3: common.User.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_common_common_proto_init() }
