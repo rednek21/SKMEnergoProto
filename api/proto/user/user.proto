@@ -30,11 +30,7 @@ message CreateRequest {
   string password_hash = 2;
   string email = 3;
 }
-message CreateResponse {
-  string username = 1;
-  repeated string roles = 2;
-  repeated string permissions = 3;
-}
+message CreateResponse {}
 
 message GetAllRequest {}
 message GetAllResponse {
@@ -80,21 +76,13 @@ message ResetPasswordConfirmedRequest {
   string username = 1;
   string hashed_password = 2;
 }
-message ResetPasswordConfirmedResponse {
-  string username = 1;
-  repeated string roles = 2;
-  repeated string permissions = 3;
-}
+message ResetPasswordConfirmedResponse {}
 
 message VerifyCredentialsRequest {
   string username = 1;
   string password = 2;
 }
-message VerifyCredentialsResponse {
-  string username = 1;
-  repeated string roles = 2;
-  repeated string permissions = 3;
-}
+message VerifyCredentialsResponse {}
 
 message ConfirmEmailRequest {
   string username = 1;

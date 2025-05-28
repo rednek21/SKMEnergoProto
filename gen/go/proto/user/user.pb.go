@@ -84,9 +84,6 @@ func (x *CreateRequest) GetEmail() string {
 
 type CreateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,27 +116,6 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateResponse) GetUsername() string {
-	if x != nil {
-		return x.Username
-	}
-	return ""
-}
-
-func (x *CreateResponse) GetRoles() []string {
-	if x != nil {
-		return x.Roles
-	}
-	return nil
-}
-
-func (x *CreateResponse) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
-	}
-	return nil
 }
 
 type GetAllRequest struct {
@@ -732,9 +708,6 @@ func (x *ResetPasswordConfirmedRequest) GetHashedPassword() string {
 
 type ResetPasswordConfirmedResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -767,27 +740,6 @@ func (x *ResetPasswordConfirmedResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ResetPasswordConfirmedResponse.ProtoReflect.Descriptor instead.
 func (*ResetPasswordConfirmedResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *ResetPasswordConfirmedResponse) GetUsername() string {
-	if x != nil {
-		return x.Username
-	}
-	return ""
-}
-
-func (x *ResetPasswordConfirmedResponse) GetRoles() []string {
-	if x != nil {
-		return x.Roles
-	}
-	return nil
-}
-
-func (x *ResetPasswordConfirmedResponse) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
-	}
-	return nil
 }
 
 type VerifyCredentialsRequest struct {
@@ -844,9 +796,6 @@ func (x *VerifyCredentialsRequest) GetPassword() string {
 
 type VerifyCredentialsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Roles         []string               `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
-	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -879,27 +828,6 @@ func (x *VerifyCredentialsResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use VerifyCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*VerifyCredentialsResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *VerifyCredentialsResponse) GetUsername() string {
-	if x != nil {
-		return x.Username
-	}
-	return ""
-}
-
-func (x *VerifyCredentialsResponse) GetRoles() []string {
-	if x != nil {
-		return x.Roles
-	}
-	return nil
-}
-
-func (x *VerifyCredentialsResponse) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
-	}
-	return nil
 }
 
 type ConfirmEmailRequest struct {
@@ -1078,11 +1006,8 @@ const file_user_user_proto_rawDesc = "" +
 	"\rCreateRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12#\n" +
 	"\rpassword_hash\x18\x02 \x01(\tR\fpasswordHash\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\"d\n" +
-	"\x0eCreateResponse\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
-	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"\x0f\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"\x10\n" +
+	"\x0eCreateResponse\"\x0f\n" +
 	"\rGetAllRequest\"4\n" +
 	"\x0eGetAllResponse\x12\"\n" +
 	"\x05users\x18\x01 \x03(\v2\f.common.UserR\x05users\" \n" +
@@ -1115,18 +1040,12 @@ const file_user_user_proto_rawDesc = "" +
 	"\x04user\x18\x01 \x01(\v2\f.common.UserR\x04user\"d\n" +
 	"\x1dResetPasswordConfirmedRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12'\n" +
-	"\x0fhashed_password\x18\x02 \x01(\tR\x0ehashedPassword\"t\n" +
-	"\x1eResetPasswordConfirmedResponse\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
-	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"R\n" +
+	"\x0fhashed_password\x18\x02 \x01(\tR\x0ehashedPassword\" \n" +
+	"\x1eResetPasswordConfirmedResponse\"R\n" +
 	"\x18VerifyCredentialsRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"o\n" +
-	"\x19VerifyCredentialsResponse\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
-	"\x05roles\x18\x02 \x03(\tR\x05roles\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\"1\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x1b\n" +
+	"\x19VerifyCredentialsResponse\"1\n" +
 	"\x13ConfirmEmailRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"\x16\n" +
 	"\x14ConfirmEmailResponse\"3\n" +
