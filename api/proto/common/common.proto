@@ -28,7 +28,8 @@ message Role {
   string name = 2;
   string description = 3;
   bool deleted = 4;
-  google.protobuf.Timestamp deleted_at = 5;
+  repeated string permissions = 5;
+  google.protobuf.Timestamp deleted_at = 6;
 }
 
 message Permission {

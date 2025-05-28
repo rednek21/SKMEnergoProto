@@ -176,7 +176,8 @@ type Role struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Deleted       bool                   `protobuf:"varint,4,opt,name=deleted,proto3" json:"deleted,omitempty"`
-	DeletedAt     *timestamp.Timestamp   `protobuf:"bytes,5,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Permissions   []string               `protobuf:"bytes,5,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	DeletedAt     *timestamp.Timestamp   `protobuf:"bytes,6,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -237,6 +238,13 @@ func (x *Role) GetDeleted() bool {
 		return x.Deleted
 	}
 	return false
+}
+
+func (x *Role) GetPermissions() []string {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
 }
 
 func (x *Role) GetDeletedAt() *timestamp.Timestamp {
@@ -667,14 +675,15 @@ const file_common_common_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xa1\x01\n" +
+	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xc3\x01\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x18\n" +
-	"\adeleted\x18\x04 \x01(\bR\adeleted\x129\n" +
+	"\adeleted\x18\x04 \x01(\bR\adeleted\x12 \n" +
+	"\vpermissions\x18\x05 \x03(\tR\vpermissions\x129\n" +
 	"\n" +
-	"deleted_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xa7\x01\n" +
+	"deleted_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xa7\x01\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
