@@ -200,7 +200,7 @@ func (*CreateResponse) Descriptor() ([]byte, []int) {
 
 type UpdateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RoleId        int32                  `protobuf:"varint,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	TargetId      int32                  `protobuf:"varint,1,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
 	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	Description   *string                `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	PermissionIds []int32                `protobuf:"varint,4,rep,packed,name=permission_ids,json=permissionIds,proto3" json:"permission_ids,omitempty"`
@@ -238,9 +238,9 @@ func (*UpdateRequest) Descriptor() ([]byte, []int) {
 	return file_role_role_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateRequest) GetRoleId() int32 {
+func (x *UpdateRequest) GetTargetId() int32 {
 	if x != nil {
-		return x.RoleId
+		return x.TargetId
 	}
 	return 0
 }
@@ -322,9 +322,9 @@ const file_role_role_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12%\n" +
 	"\x0epermission_ids\x18\x03 \x03(\x05R\rpermissionIds\"\x10\n" +
-	"\x0eCreateResponse\"\xa8\x01\n" +
-	"\rUpdateRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\x05R\x06roleId\x12\x17\n" +
+	"\x0eCreateResponse\"\xac\x01\n" +
+	"\rUpdateRequest\x12\x1b\n" +
+	"\ttarget_id\x18\x01 \x01(\x05R\btargetId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12%\n" +
 	"\vdescription\x18\x03 \x01(\tH\x01R\vdescription\x88\x01\x01\x12%\n" +
 	"\x0epermission_ids\x18\x04 \x03(\x05R\rpermissionIdsB\a\n" +
